@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+    <link rel="stylesheet" href="../bootstrap413/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="../datatables/css/dataTables.bootstrap4.css">
+
+    <link rel="stylesheet" href="../css/FacilityList.css">
+
+</head>
+<body style="margin: 0; padding: 0;background-image: radial-gradient(#0c5460,#e0e0e0);">
+
+<div id="header"></div>
+
+<div style="min-height:180vh; padding: 20px">
+    <div class="row">
+<!--        <div class="col-4">-->
+<!--            <img src="../image/left.jpg"-->
+<!--                 style="width: 100%;border-radius: 10px;height: 250px;background-size: contain;">-->
+<!--        </div>-->
+<!--        <div class="col-4">-->
+<!--            <div style="background-color: white;height: 250px;border-radius: 8px;text-align: center;opacity: 70%">-->
+<!--                <h1 style=";line-height: 250px;font-family: Calibri,serif;font-size: 70px"><b>FACILITY LIST</b></h1>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col-4">-->
+<!--            <img src="../image/right.jpg"-->
+<!--                 style="width: 100%;border-radius: 10px;height: 250px;background-size: contain;">-->
+<!--        </div>-->
+        <div class="col-12">
+            <div class="container">
+                <img src="../image/titlef2.jpg" alt="Snow" style="width: 100%;border-radius: 10px;height: 250px;opacity: 70%">
+                <div class="centered">
+                    <h1 style=";line-height: 250px;font-family: Calibri,serif;font-size: 70px;text-shadow: 2px 0 #000000, -2px 0 #000000, 0 2px #000000, 0 -2px #000000,
+             1px 1px #000000, -1px -1px #000000, 1px -1px #000000, -1px 1px #000000;"><b>FACILITY LIST</b></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-4" style="margin-top: 100px">
+            <center>
+                <div class="card"
+                     style="width: 25rem;box-shadow: 15px 15px rgba(0,0,0.5,0.3);padding: 10px;border-radius: 10px">
+                    <img class="card-img-top" src="../image/f1.jpg" alt="Card image cap" style="border-radius: 5px">
+                    <div class="card-body">
+                        <h5 class="card-title" style="text-align: left">OCEAN SUITE</h5>
+                        <p class="card-text" style="text-align: left">Room size: 85.5m2</p>
+                        <div style=";float: right;">
+                            <a href="#" class="btn btn-secondary" style="background-color: #046056"><i
+                                    class="fa-solid fa-pen-to-square"></i> Edit</a>
+                            <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i> Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </center>
+        </div>
+        <div class="col-4" style="margin-top: 100px">
+            <center>
+                <div class="card"
+                     style="width: 25rem;box-shadow: 15px 15px rgba(0,0,0.5,0.3);padding: 10px;border-radius: 10px">
+                    <img class="card-img-top" src="../image/f2.jpg" alt="Card image cap" style="border-radius: 5px">
+                    <div class="card-body">
+                        <h5 class="card-title" style="text-align: left">OCEAN STUDIO SUITE</h5>
+                        <p class="card-text" style="text-align: left">Room size: 40.1m2</p>
+                        <div style=";float: right;">
+                            <a href="#" class="btn btn-secondary" style="background-color: #046056"><i
+                                    class="fa-solid fa-pen-to-square"></i> Edit</a>
+                            <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i> Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </center>
+        </div>
+        <div class="col-4" style="margin-top: 100px">
+            <center>
+                <div class="card"
+                     style="width: 25rem;box-shadow: 15px 15px rgba(0,0,0.5,0.3);padding: 10px;border-radius: 10px">
+                    <img class="card-img-top" src="../image/f3.jpg" alt="Card image cap" style="border-radius: 5px">
+                    <div class="card-body">
+                        <h5 class="card-title" style="text-align: left">OCEAN DELUXE</h5>
+                        <p class="card-text" style="text-align: left">Room size: 43.7m2</p>
+                        <div style=";float: right;">
+                            <a href="#" class="btn btn-secondary" style="background-color: #046056"><i
+                                    class="fa-solid fa-pen-to-square"></i> Edit</a>
+                            <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i> Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </center>
+        </div>
+        <div class="col-4" style="margin-top: 100px">
+            <center>
+                <div class="card"
+                     style="width: 25rem;box-shadow: 15px 15px rgba(0,0,0.5,0.3);padding: 10px;border-radius: 10px">
+                    <img class="card-img-top" src="../image/f4.jpg" alt="Card image cap" style="border-radius: 10px">
+                    <div class="card-body">
+                        <h5 class="card-title" style="text-align: left">LAGOON SUPERIOR</h5>
+                        <p class="card-text" style="text-align: left">Room size: 40.1m2</p>
+                        <div style=";float: right;">
+                            <a href="#" class="btn btn-secondary" style="background-color: #046056"><i
+                                    class="fa-solid fa-pen-to-square"></i> Edit</a>
+                            <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i> Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </center>
+        </div>
+        <div class="col-4" style="margin-top: 100px">
+            <center>
+                <div class="card"
+                     style="width: 25rem;box-shadow: 15px 15px rgba(0,0,0.5,0.3);padding: 10px;border-radius: 10px">
+                    <img class="card-img-top" src="../image/f5.jpg" alt="Card image cap" style="border-radius: 10px">
+                    <div class="card-body">
+                        <h5 class="card-title" style="text-align: left">GARDEN SUPERIOR</h5>
+                        <p class="card-text" style="text-align: left">Room size: 40.1m2</p>
+                        <div style=";float: right;">
+                            <a href="#" class="btn btn-secondary" style="background-color: #046056"><i
+                                    class="fa-solid fa-pen-to-square"></i> Edit</a>
+                            <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i> Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </center>
+        </div>
+        <div class="col-4" style="margin-top: 100px">
+            <center>
+                <div class="card"
+                     style="width: 25rem;box-shadow: 15px 15px rgba(0,0,0.5,0.3);padding: 10px;border-radius: 10px">
+                    <img class="card-img-top" src="../image/f6.jpg" alt="Card image cap" style="border-radius: 10px">
+                    <div class="card-body">
+                        <h5 class="card-title" style="text-align: left">GARDEN DELUXE</h5>
+                        <p class="card-text" style="text-align: left">Room size: 43.7m2</p>
+                        <div style=";float: right;">
+                            <a href="#" class="btn btn-secondary" style="background-color: #046056"><i
+                                    class="fa-solid fa-pen-to-square"></i> Edit</a>
+                            <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i> Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </center>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<div id="footer"></div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
+
+<script src="../datatables/js/jquery.dataTables.js"></script>
+
+<script src="../datatables/js/dataTables.bootstrap4.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+
+<script src="../bootstrap413/js/bootstrap.bundle.js"></script>
+
+<script>
+    $(function () {
+        $("#header").load("../html/header.html");
+    });
+
+    $(function () {
+        $("#footer").load("../html/footer.html");
+    });
+</script>
+</html>

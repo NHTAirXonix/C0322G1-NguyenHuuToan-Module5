@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+    <link rel="stylesheet" href="../bootstrap413/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="../datatables/css/dataTables.bootstrap4.css">
+
+    <link rel="stylesheet" href="../css/FacilityEdit.css">
+
+</head>
+<body style="margin: 0; padding: 0;background-image: radial-gradient(#0c5460,#e0e0e0);">
+
+<div id="header" style="height: 20vh"></div>
+
+<div style="min-height:100vh">
+    <center>
+        <div style="width: 800px; background-color: white; padding: 10px; margin-top: 100px;border-radius: 10px">
+            <h1 style="border-radius: 5px; background-color: #046056;color: white;font-family: 'Arial Black',serif;">EDIT SERVICE</h1>
+            <form id="createVilla" novalidate="novalidate" class="p-3">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="idV">Service ID</label>
+                            <input readonly placeholder="Auto Increase" type="text" class="form-control" id="idV">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="nameV">Service Name</label>
+                            <input type="text" class="form-control" id="nameV">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="areaV">Service Area</label>
+                            <input type="text" class="form-control" id="areaV">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="costV">Service Cost</label>
+                            <input type="text" class="form-control" id="costV">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="standardRoomV">Service Standar Room</label>
+                            <select class="custom-select" id="standardRoomV">
+                                <option value="Vip">Vip</option>
+                                <option value="Luxury">Luxury</option>
+                                <option value="Normal">Normal</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="amountCustomerV">Service Amount Customer</label><br>
+                            <input type="text" class="form-control" id="amountCustomerV">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="descriptionV">Service Description</label><br>
+                            <input type="text" class="form-control" id="descriptionV">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="poolAreaV">Service Pool Area</label><br>
+                            <input type="text" class="form-control" id="poolAreaV">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="floorV">Service Floor</label><br>
+                            <input type="text" class="form-control" id="floorV">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="rentTypeV">Service Rent Type</label><br>
+                            <select class="custom-select" id="rentTypeV">
+                                <option th:each="row,rowStat : ${rentTypeList}"
+                                        th:value="${row.id}"
+                                        th:text="${row.rentType}">
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="facilityTypeV">Service Type</label><br>
+                            <select class="custom-select" id="facilityTypeV">
+                                <option th:value="1" th:text="Villa"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="freeServiceV">Free Service</label><br>
+                            <input readonly placeholder="Don't have this option" type="text" class="form-control" id="freeServiceV">
+                        </div>
+                    </div>
+                </div>
+
+                <!--                BUTTON IN VILLA-->
+
+                <span>
+                    <button class="greenButton save1" data-dismiss="modal" id="save1" >Save</button>
+                </span>
+                <span>
+                    <button type="button" class="greyButton" data-dismiss="modal">Cancel</button>
+                </span>
+                <span>
+                    <button class="blueButton">
+                        <a style="color: white;text-decoration: none;" th:href="@{/service/list(page = 0,name = '')}" role="button">Back to service list</a>
+                    </button>
+                </span>
+            </form>
+        </div>
+    </center>
+</div>
+
+
+
+
+
+<div id="footer"></div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
+
+<script src="../datatables/js/jquery.dataTables.js"></script>
+
+<script src="../datatables/js/dataTables.bootstrap4.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+
+<script src="../bootstrap413/js/bootstrap.bundle.js"></script>
+
+<script>
+    $(function () {
+        $("#header").load("../html/header.html");
+    });
+
+    $(function () {
+        $("#footer").load("../html/footer.html");
+    });
+</script>
+</html>

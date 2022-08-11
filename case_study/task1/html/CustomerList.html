@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+    <link rel="stylesheet" href="../bootstrap413/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="../datatables/css/dataTables.bootstrap4.css">
+
+    <link rel="stylesheet" href="../css/CustomerList.css">
+
+</head>
+<body style="margin: 0; padding: 0;background-image: radial-gradient(#0c5460,#e0e0e0);">
+
+<div id="header" style="height: 20vh"></div>
+
+<div style="min-height:70vh">
+    <div class="bodyAll">
+        <table id="customerService" class="tableTitle">
+            <tr>
+                <th style="width: 70%"><h1 class="titles">CUSTOMER LIST</h1></th>
+                <th>
+                    <button onclick="add()"
+                            style="background-color: white;color: black; border-radius: 5px; height: 40px"> &#10010;
+                        New Customer
+                    </button>
+                </th>
+                <th>
+                    <form th:action="@{/customer/list}" th:object="${customer}" method="get">
+                        <input style="height:40px;border-radius:5px;" placeholder="Enter the blog's name" type="text"
+                               th:field="*{customerName}">
+                        <button style="background-color: white;color: black; border-radius: 5px; height: 40px"
+                                type="submit">&#9906; Search
+                        </button>
+                    </form>
+                </th>
+            </tr>
+        </table>
+
+        <table id="tableCustomer" class="table table-striped table-bordered" style="width: 100%">
+            <thead class="thead-dark">
+            <tr>
+                <th class="header"><p style="text-align: center">ID</p></th>
+                <th class="header"><p style="text-align: center">TYPE ID</p></th>
+                <th class="header"><p style="text-align: center">NAME</p></th>
+                <th class="header"><p style="text-align: center">BIRTHDAY</p></th>
+                <th class="header"><p style="text-align: center">GENDER</p></th>
+                <th class="header"><p style="text-align: center">ID CARD</p></th>
+                <th class="header"><p style="text-align: center">PHONE</p></th>
+                <th class="header"><p style="text-align: center">EMAIL</p></th>
+                <th class="header"><p style="text-align: center">ADDRESS</p></th>
+                <th class="header"><p style="text-align: center">EDIT</p></th>
+                <th class="header"><p style="text-align: center">DELETE</p></th>
+            </tr>
+            </thead>
+            <tbody id="display">
+
+            <tr th:each="customer,rowStat : ${customerList}">
+                <td th:text="${rowStat.count+customerList.size*page}">1</td>
+                <td th:text="${customer.customerType.customerTypeName}">Vip</td>
+                <td th:text="${customer.customerName}">Nguyen Huu Toan</td>
+                <td th:text="${customer.customerBirthDay}">1999-10-10</td>
+                <td th:text="${customer.customerGender}">Nam</td>
+                <td th:text="${customer.customerIdCard}">201802281</td>
+                <td th:text="${customer.customerPhone}">0971263514</td>
+                <td th:text="${customer.customerEmail}">toan@gmail.com</td>
+                <td th:text="${customer.customerAddress}">295 Ton Duc Thang</td>
+                <td><center><button class="greenButton">Edit</button></center></td>
+                <td><center><button class="redButton" data-toggle="modal" onclick="del(1)" data-target="#delete">Delete</button></center></center></td>
+            </tr>
+            <tr th:each="customer,rowStat : ${customerList}">
+                <td th:text="${rowStat.count+customerList.size*page}">2</td>
+                <td th:text="${customer.customerType.customerTypeName}">Platinum</td>
+                <td th:text="${customer.customerName}">Nguyen Trung Kien</td>
+                <td th:text="${customer.customerBirthDay}">2000-10-10</td>
+                <td th:text="${customer.customerGender}">Nam</td>
+                <td th:text="${customer.customerIdCard}">201802281</td>
+                <td th:text="${customer.customerPhone}">0971263514</td>
+                <td th:text="${customer.customerEmail}">toan@gmail.com</td>
+                <td th:text="${customer.customerAddress}">295 Nguyen Tat Thanh</td>
+                <td><center><button class="greenButton">Edit</button></center></td>
+                <td><center><button class="redButton" data-toggle="modal"
+                                    onclick="del(2)" data-target="#delete" >Delete</button></center></center></td>
+            </tr>
+            <tr th:each="customer,rowStat : ${customerList}">
+                <td th:text="${rowStat.count+customerList.size*page}">3</td>
+                <td th:text="${customer.customerType.customerTypeName}">Gold</td>
+                <td th:text="${customer.customerName}">Tran Van Khanh</td>
+                <td th:text="${customer.customerBirthDay}">1989-10-10</td>
+                <td th:text="${customer.customerGender}">Nam</td>
+                <td th:text="${customer.customerIdCard}">201802281</td>
+                <td th:text="${customer.customerPhone}">0971263514</td>
+                <td th:text="${customer.customerEmail}">toan@gmail.com</td>
+                <td th:text="${customer.customerAddress}">295 Nguyen Huy Tuong</td>
+                <td><center><button class="greenButton">Edit</button></center></td>
+                <td><center><button class="redButton" data-toggle="modal"
+                                    onclick="del(3)" data-target="#delete" >Delete</button></center></center></td>
+            </tr>
+            <tr th:each="customer,rowStat : ${customerList}">
+                <td th:text="${rowStat.count+customerList.size*page}">4</td>
+                <td th:text="${customer.customerType.customerTypeName}">Vip</td>
+                <td th:text="${customer.customerName}">Nguyen Hoang Hao</td>
+                <td th:text="${customer.customerBirthDay}">1999-10-10</td>
+                <td th:text="${customer.customerGender}">Nam</td>
+                <td th:text="${customer.customerIdCard}">201802281</td>
+                <td th:text="${customer.customerPhone}">0971263514</td>
+                <td th:text="${customer.customerEmail}">toan@gmail.com</td>
+                <td th:text="${customer.customerAddress}">295 Hoang Hoa Tham</td>
+                <td><center><button class="greenButton">Edit</button></center></td>
+                <td><center><button class="redButton" data-toggle="modal"
+                                    onclick="del(4)" data-target="#delete">Delete</button></center></center></td>
+            </tr>
+            <tr th:each="customer,rowStat : ${customerList}">
+                <td th:text="${rowStat.count+customerList.size*page}">5</td>
+                <td th:text="${customer.customerType.customerTypeName}">Diamond</td>
+                <td th:text="${customer.customerName}">Nguyen Huu Duc</td>
+                <td th:text="${customer.customerBirthDay}">1999-10-10</td>
+                <td th:text="${customer.customerGender}">Nam</td>
+                <td th:text="${customer.customerIdCard}">201802281</td>
+                <td th:text="${customer.customerPhone}">0971263514</td>
+                <td th:text="${customer.customerEmail}">toan@gmail.com</td>
+                <td th:text="${customer.customerAddress}">295 Ton That Tung</td>
+                <td><center><button class="greenButton">Edit</button></center></td>
+                <td><center><button class="redButton" data-toggle="modal"
+                                    onclick="del(5)" data-target="#delete">Delete</button></center></center></td>
+            </tr>
+            <tr th:each="customer,rowStat : ${customerList}">
+                <td th:text="${rowStat.count+customerList.size*page}">6</td>
+                <td th:text="${customer.customerType.customerTypeName}">Member</td>
+                <td th:text="${customer.customerName}">Tran Duy Trung</td>
+                <td th:text="${customer.customerBirthDay}">1999-10-10</td>
+                <td th:text="${customer.customerGender}">Nam</td>
+                <td th:text="${customer.customerIdCard}">201802281</td>
+                <td th:text="${customer.customerPhone}">0971263514</td>
+                <td th:text="${customer.customerEmail}">toan@gmail.com</td>
+                <td th:text="${customer.customerAddress}">295 Nguyen Luong Bang</td>
+                <td><center><button class="greenButton">Edit</button></center></td>
+                <td><center><button class="redButton" data-toggle="modal"
+                                    onclick="del(6)" data-target="#delete">Delete</button></center></center></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <!--MODAL DELETE-->
+
+    <div class="modal" id="delete">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title w-100 text-left"> Warning !</h4>
+                    <button type="button" class="redButton" style="height: 30px;width: 30px" data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Delete customer id:
+                    <p id="confirm"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" onclick="customerIndex2()">
+                        <a class="text-white">Xóa</a>
+                    </button>
+                    <button type="button" class="btn btn-dark " data-dismiss="modal">Hủy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div id="footer"></div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
+
+<script src="../datatables/js/jquery.dataTables.js"></script>
+
+<script src="../datatables/js/dataTables.bootstrap4.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+
+<script src="../bootstrap413/js/bootstrap.bundle.js"></script>
+
+<script>
+
+    $(function () {
+        $("#header").load("../html/header.html");
+    });
+
+    $(function () {
+        $("#footer").load("../html/footer.html");
+    });
+
+    $('#tableCustomer').dataTable({
+        "dom": 'lrtip',
+        "lengthChange": false,
+        "pageLength": 3
+    });
+
+    function del(input) {
+        document.getElementById('confirm').innerHTML = input;
+    }
+
+    // class Customer {
+    //     constructor(customerId, customerType, customerName, birthday, gender, idNumber, phoneNumber, gmail, address) {
+    //         this._customerId = customerId;
+    //         this._customerType = customerType;
+    //         this._customerName = customerName;
+    //         this._birthday = birthday;
+    //         this._gender = gender;
+    //         this._idNumber = idNumber;
+    //         this._phoneNumber = phoneNumber;
+    //         this._gmail = gmail;
+    //         this._address = address;
+    //     }
+    //
+    //     getCustomerId() {
+    //         return this._customerId;
+    //     }
+    //
+    //     setCustomerId(value) {
+    //         this._customerId = value;
+    //     }
+    //
+    //     getCustomerType() {
+    //         return this._customerType;
+    //     }
+    //
+    //     setCustomerType(value) {
+    //         this._customerType = value;
+    //     }
+    //
+    //     getCustomerName() {
+    //         return this._customerName;
+    //     }
+    //
+    //     setCustomerName(value) {
+    //         this._customerName = value;
+    //     }
+    //
+    //     getBirthday() {
+    //         return this._birthday;
+    //     }
+    //
+    //     setBirthday(value) {
+    //         this._birthday = value;
+    //     }
+    //
+    //     getGender() {
+    //         return this._gender;
+    //     }
+    //
+    //     setGender(value) {
+    //         this._gender = value;
+    //     }
+    //
+    //     getIdNumber() {
+    //         return this._idNumber;
+    //     }
+    //
+    //     setIdNumber(value) {
+    //         this._idNumber = value;
+    //     }
+    //
+    //     getPhoneNumber() {
+    //         return this._phoneNumber;
+    //     }
+    //
+    //     setPhoneNumber(value) {
+    //         this._phoneNumber = value;
+    //     }
+    //
+    //     getGmail() {
+    //         return this._gmail;
+    //     }
+    //
+    //     setGmail(value) {
+    //         this._gmail = value;
+    //     }
+    //
+    //     getAddress() {
+    //         return this._address;
+    //     }
+    //
+    //     setAddress(value) {
+    //         this._address = value;
+    //     }
+    // }
+    //
+    // arrayTotal = [];
+    // let toan = new Customer("KH-001", "Dimond", "Nguyen Huu Toan", "1999-07-04", "Nam", "201802281", "0971263514", "Toan@gmail.com", "39 Ton Duc Thang");
+    // let khanh = new Customer("KH-002", "Platinum", "Tran Van Khanh", "2000-09-15", "Nam", "123547842", "0971223232", "Khanh@gmail.com", "23 Nguyen Tat Thanh");
+    // let kien = new Customer("KH-003", "Gold", "Nguyen Tran Trung Kien", "1988-11-20", "Nam", "123546452", "0971256565", "Kien@gmail.com", "188 Nguyen Huy Tuong");
+    // let uyen = new Customer("KH-004", "Member", "Nguyen Thao Uyen", "2002-12-06", "Nu", "12359659", "0971289898", "Uyen@gmail.com", "323 Ong Ich Khiem");
+    // let hao = new Customer("KH-005", "Silver", "Nguyen Hoang Hao", "1999-10-25", "Nam", "321458796", "0971212121", "Hao@gmail.com", "122 To Huu");
+    //
+    // arrayTotal.push(toan);
+    // arrayTotal.push(khanh);
+    // arrayTotal.push(kien);
+    // arrayTotal.push(uyen);
+    // arrayTotal.push(hao);
+    //
+    // function display() {
+    //     let temp = ""
+    //         for (let i = 0; i < 3; i++) {
+    //             temp += "<tr>"+
+    //                         "<td>"+arrayTotal[i].getCustomerId()+"</td>"+
+    //                         "<td>"+arrayTotal[i].getCustomerType()+"</td>"+
+    //                         "<td>"+arrayTotal[i].getCustomerName()+"</td>"+
+    //                         "<td>"+arrayTotal[i].getBirthday()+"</td>"+
+    //                         "<td>"+arrayTotal[i].getGender()+"</td>"+
+    //                         "<td>"+arrayTotal[i].getIdNumber()+"</td>"+
+    //                         "<td>"+arrayTotal[i].getPhoneNumber()+"</td>"+
+    //                         "<td>"+arrayTotal[i].getGmail()+"</td>"+
+    //                         "<td>"+arrayTotal[i].getAddress()+"</td>"+
+    //                         "<td><center><button class=\"greenButton\" id='edit'>Edit</button></center></td>"+
+    //                         "<td><center><button class=\"redButton\" id='delete'>Delete</button></center></td>"+
+    //                      "</tr>"
+    //         }
+    //     temp += "</table>";
+    //     document.getElementById('display').innerHTML = temp;
+    // }
+    //
+    // function add() {
+    //     alert("input please")
+    // }
+    //
+    // display();
+
+
+</script>
+
+</html>

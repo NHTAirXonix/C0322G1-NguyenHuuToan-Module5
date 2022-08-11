@@ -3,4 +3,8 @@
     height: 96px;
     width: 100%;
     color: white;
+    clear: both;
+    position: relative;
+
+    margin-top: -96px;
 }
