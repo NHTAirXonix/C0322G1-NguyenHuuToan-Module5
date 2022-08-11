@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+    <link rel="stylesheet" href="../bootstrap413/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="../datatables/css/dataTables.bootstrap4.css">
+
+    <link rel="stylesheet" href="../css/header.css">
+
+</head>
+<body style="margin: 0; padding: 0">
+
+<!--HEADER-->
+
+<div class="header-panel">
+    <div class="row" style="height: 10%;margin: 0;padding: 0;">
+        <div class="col-2" style="height: 80px;margin: 0;padding: 0;">
+            <img src="../image/logo_web6.jpg" alt=""
+                 style="height: 60px; width: 60px; margin: 10px;display: inline;border-radius: 5px;border: black solid 1px;padding: 0;">
+            <p style="line-height: 80px;text-align: left;width: 70%;display: inline;font-size: 20px;color: white">
+                <b>FURAMA RESORT</b>
+            </p>
+        </div>
+        <div class="col-7"></div>
+        <div class="col-3"></div>
+    </div>
+</div>
+
+<!--MENU--NAVIGATION-->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light" ;>
+    <a class="navbar-brand" href="@{/}">Home</a>
+
+    <a class="navbar-brand" href="@{/customer/list}">Customer</a>
+
+    <a class="navbar-brand" href="@{/employee/list}">Employee</a>
+
+    <a class="navbar-brand" href="@{/service/list}">Service</a>
+
+    <a class="navbar-brand" href="@{/contract/list}">Contract</a>
+</nav>
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+<script src="../datatables/js/jquery.dataTables.js"></script>
+
+<script src="../datatables/js/dataTables.bootstrap4.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+
+<script src="../bootstrap413/js/bootstrap.bundle.js"></script>
+
+</html>
