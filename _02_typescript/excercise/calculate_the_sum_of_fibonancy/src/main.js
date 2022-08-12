@@ -1,13 +1,11 @@
 function sumCalculat(amount) {
     var sum = fibonancy(amount, 0, 1, 0, 0);
-    return sum;
 }
 function fibonancy(amount, number1, number2, count, sum) {
     if (count == amount) {
         console.log("-------");
         console.log("Amount is: " + amount);
         console.log("Sum is: " + sum);
-        return sum;
     }
     else {
         var total = sum;
@@ -21,4 +19,4 @@ function fibonancy(amount, number1, number2, count, sum) {
     }
 }
 var amount = 10;
-var result = sumCalculat(amount);
+sumCalculat(amount);
