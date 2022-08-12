@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+</head>
+<body style="margin: 0; padding: 0;background-image: radial-gradient(#0c5460,#e0e0e0);">
+
+<div style="min-height:70vh;padding: 15px 50px 15px 50px">
+  <form th:action="@{/customer/save}" th:object="${customer}" method="POST" novalidate="novalidate"
+        style="width: 50%; margin: auto; margin-top: 100px;margin-bottom: 100px; background-color: white;padding: 20px;border-radius: 10px">
+    <h3 style="text-align: center;font-family: 'Arial Black',serif;">EDIT CUSTOMER</h3>
+    <div class="row">
+      <div class="col-6">
+        <div class="form-group">
+          <label for="customerId">Customer Id</label>
+          <p style="color: red" th:if="${#fields.hasErrors('customerId')}" th:errors="*{customerId}"></p>
+          <input type="text" class="form-control" id="customerId" th:field="*{customerId}"/>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="customerName">Customer Name</label>
+          <p style="color: red" th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}"></p>
+          <input type="text" class="form-control" id="customerName" th:field="*{customerName}"/>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="customerBirthDay">Customer Birthday</label>
+          <p style="color: red" th:if="${#fields.hasErrors('customerBirthDay')}" th:errors="*{customerBirthDay}"></p>
+          <input type="date" class="form-control" id="customerBirthDay" th:field="*{customerBirthDay}"/>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="customerPhone">Customer Email</label>
+          <p style="color: red" th:if="${#fields.hasErrors('customerEmail')}" th:errors="*{customerEmail}"></p>
+          <input type="text" class="form-control" id="customerEmail" th:field="*{customerEmail}"/>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="customerGender">Customer Gender</label><br>
+          <p style="color: red" th:if="${#fields.hasErrors('customerGender')}" th:errors="*{customerGender}"></p>
+          <select class="custom-select" id="customerGender" th:field="*{customerGender}">
+            <option value="0">Nam</option>
+            <option value="1">Nữ</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="customerType">Customer Type</label><br>
+          <p style="color: red" th:if="${#fields.hasErrors('customerType')}" th:errors="*{customerType}"></p>
+          <select class="custom-select" id="customerType" th:field="*{customerType}">
+            <option th:each="customerType,rowStat : ${listCustomerType}" th:value="${customerType.customerTypeId}"
+                    th:text="${customerType.customerTypeName}">Nam
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="customerIdCard">Customer Id Card Number</label>
+          <p style="color: red" th:if="${#fields.hasErrors('customerIdCard')}" th:errors="*{customerIdCard}"></p>
+          <input type="text" class="form-control" id="customerIdCard" th:field="*{customerIdCard}"/>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="customerPhone">Customer Phone Number</label>
+          <p style="color: red" th:if="${#fields.hasErrors('customerPhone')}" th:errors="*{customerPhone}"></p>
+          <input type="text" class="form-control" id="customerPhone" th:field="*{customerPhone}"/>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="customerAddress">Customer Address</label>
+          <p style="color: red" th:if="${#fields.hasErrors('customerAddress')}" th:errors="*{customerAddress}"></p>
+          <input type="text" class="form-control" id="customerAddress" th:field="*{customerAddress}"/>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="statusDelete">Customer Status</label>
+          <p style="color: red" th:if="${#fields.hasErrors('statusDelete')}" th:errors="*{statusDelete}"></p>
+          <input readonly type="text" class="form-control" id="statusDelete" th:field="*{statusDelete}"/>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-12">
+        <table>
+          <tr>
+            <th><button class="btn btn-success" type="submit">Save</button></th>
+            <th><button class="btn btn-secondary"><a style="color: #ffffff;text-decoration: none;" href="http://localhost:4200/customer" role="button">Back to customer list</a></button></th>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+  </form>
+</div>
+</body>
+</html>
