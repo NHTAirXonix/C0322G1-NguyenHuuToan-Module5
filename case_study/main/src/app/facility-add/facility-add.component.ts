@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Facility} from "../model/facility.model";
+import {RentType} from "../model/rent-type.model";
+import {FacilityType} from "../model/facility-type.model";
 
 @Component({
   selector: 'app-facility-add',
@@ -44,4 +47,23 @@ export class FacilityAddComponent implements OnInit {
   closePopupR() {
     this.displayStyle3 = "none";
   }
+
+  rentTypeList: RentType[] = [
+    new RentType(1,'Hour'),
+    new RentType(2,'Day'),
+    new RentType(3,'Month')
+  ];
+
+  facilityTypeList: FacilityType[] = [
+    new FacilityType(1,'Villa'),
+    new FacilityType(2,'House'),
+    new FacilityType(3,'Room')
+  ];
+
+  roomStandardList: String[] = [
+    ('Vip'),
+    ('Luxury'),
+    ('Normal'),
+    ('Cheap')
+  ];
 }

@@ -8,7 +8,7 @@ import { ContractComponent } from './contract/contract.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
-import {RouterModule, Routes} from '@angular/router';
+import { RouterModule, Routes} from '@angular/router';
 import { ErrorComponent } from './error/error.component';
 import { CustomerAddComponent } from './customer-add/customer-add.component';
 import { CustomerEditComponent } from './customer-edit/customer-edit.component';

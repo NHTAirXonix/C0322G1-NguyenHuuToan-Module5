@@ -10,7 +10,7 @@
 </head>
 <body style="margin: 0; padding: 0;background-image: radial-gradient(#0c5460,#e0e0e0);">
 
-<div style="min-height:70vh;padding: 15px 50px 15px 50px">
+<div style="min-height:75vh;padding: 15px 50px 15px 50px">
   <div class="bodyAll">
     <table id="customerService" class="tableTitle">
       <tr>
@@ -49,82 +49,17 @@
       </tr>
       </thead>
       <tbody id="display">
-      <tr>
-        <td>1</td>
-        <td>Vip</td>
-        <td>Nguyen Huu Toan</td>
-        <td>1999-10-10</td>
-        <td>Nam</td>
-        <td>201802281</td>
-        <td>0971263514</td>
-        <td>toan@gmail.com</td>
-        <td>295 Ton Duc Thang</td>
-        <td><button class="btn btn-primary "><a style="color: white;text-decoration: none" href="http://localhost:4200/customerEdit">Edit</a></button></td>
-        <td><button class="btn btn-danger" (click)="openPopup()">Delete</button></td>
-      </tr>
-      <tr th:each="customer,rowStat : ${customerList}">
-        <td th:text="${rowStat.count+customerList.size*page}">2</td>
-        <td th:text="${customer.customerType.customerTypeName}">Platinum</td>
-        <td th:text="${customer.customerName}">Nguyen Trung Kien</td>
-        <td th:text="${customer.customerBirthDay}">2000-10-10</td>
-        <td th:text="${customer.customerGender}">Nam</td>
-        <td th:text="${customer.customerIdCard}">201802281</td>
-        <td th:text="${customer.customerPhone}">0971263514</td>
-        <td th:text="${customer.customerEmail}">toan@gmail.com</td>
-        <td th:text="${customer.customerAddress}">295 Nguyen Tat Thanh</td>
-        <td><button class="btn btn-primary "><a style="color: white;text-decoration: none" href="http://localhost:4200/customerEdit">Edit</a></button></td>
-        <td><button class="btn btn-danger" (click)="openPopup()">Delete</button></td>
-      </tr>
-      <tr th:each="customer,rowStat : ${customerList}">
-        <td th:text="${rowStat.count+customerList.size*page}">3</td>
-        <td th:text="${customer.customerType.customerTypeName}">Gold</td>
-        <td th:text="${customer.customerName}">Tran Van Khanh</td>
-        <td th:text="${customer.customerBirthDay}">1989-10-10</td>
-        <td th:text="${customer.customerGender}">Nam</td>
-        <td th:text="${customer.customerIdCard}">201802281</td>
-        <td th:text="${customer.customerPhone}">0971263514</td>
-        <td th:text="${customer.customerEmail}">toan@gmail.com</td>
-        <td th:text="${customer.customerAddress}">295 Nguyen Huy Tuong</td>
-        <td><button class="btn btn-primary "><a style="color: white;text-decoration: none" href="http://localhost:4200/customerEdit">Edit</a></button></td>
-        <td><button class="btn btn-danger" (click)="openPopup()">Delete</button></td>
-      </tr>
-      <tr th:each="customer,rowStat : ${customerList}">
-        <td th:text="${rowStat.count+customerList.size*page}">4</td>
-        <td th:text="${customer.customerType.customerTypeName}">Vip</td>
-        <td th:text="${customer.customerName}">Nguyen Hoang Hao</td>
-        <td th:text="${customer.customerBirthDay}">1999-10-10</td>
-        <td th:text="${customer.customerGender}">Nam</td>
-        <td th:text="${customer.customerIdCard}">201802281</td>
-        <td th:text="${customer.customerPhone}">0971263514</td>
-        <td th:text="${customer.customerEmail}">toan@gmail.com</td>
-        <td th:text="${customer.customerAddress}">295 Hoang Hoa Tham</td>
-        <td><button class="btn btn-primary "><a style="color: white;text-decoration: none" href="http://localhost:4200/customerEdit">Edit</a></button></td>
-        <td><button class="btn btn-danger" (click)="openPopup()">Delete</button></td>
-      </tr>
-      <tr th:each="customer,rowStat : ${customerList}">
-        <td th:text="${rowStat.count+customerList.size*page}">5</td>
-        <td th:text="${customer.customerType.customerTypeName}">Diamond</td>
-        <td th:text="${customer.customerName}">Nguyen Huu Duc</td>
-        <td th:text="${customer.customerBirthDay}">1999-10-10</td>
-        <td th:text="${customer.customerGender}">Nam</td>
-        <td th:text="${customer.customerIdCard}">201802281</td>
-        <td th:text="${customer.customerPhone}">0971263514</td>
-        <td th:text="${customer.customerEmail}">toan@gmail.com</td>
-        <td th:text="${customer.customerAddress}">295 Ton That Tung</td>
-        <td><button class="btn btn-primary "><a style="color: white;text-decoration: none" href="http://localhost:4200/customerEdit">Edit</a></button></td>
-        <td><button class="btn btn-danger" (click)="openPopup()">Delete</button></td>
-      </tr>
-      <tr th:each="customer,rowStat : ${customerList}">
-        <td th:text="${rowStat.count+customerList.size*page}">6</td>
-        <td th:text="${customer.customerType.customerTypeName}">Member</td>
-        <td th:text="${customer.customerName}">Tran Duy Trung</td>
-        <td th:text="${customer.customerBirthDay}">1999-10-10</td>
-        <td th:text="${customer.customerGender}">Nam</td>
-        <td th:text="${customer.customerIdCard}">201802281</td>
-        <td th:text="${customer.customerPhone}">0971263514</td>
-        <td th:text="${customer.customerEmail}">toan@gmail.com</td>
-        <td th:text="${customer.customerAddress}">295 Nguyen Luong Bang</td>
-        <td><button class="btn btn-primary "><a style="color: white;text-decoration: none" href="http://localhost:4200/customerEdit">Edit</a></button></td>
+      <tr *ngFor="let customer of customerList">
+        <td [ngStyle]="{ color: customer.getstatus() ? 'black' : 'red'}">{{ customer.getid() }}</td>
+        <td>{{ customer.gettype().getname() }}</td>
+        <td>{{ customer.getname() }}</td>
+        <td>{{ customer.getbirthday() }}</td>
+        <td>{{ customer.getgender() }}</td>
+        <td>{{ customer.getidNumber() }}</td>
+        <td>{{ customer.getphone() }}</td>
+        <td>{{ customer.getemail() }}</td>
+        <td>{{ customer.getaddress() }}</td>
+        <td><button class="btn btn-primary " style="background-color: #046056"><a style="color: white;text-decoration: none" href="http://localhost:4200/customerEdit">Edit</a></button></td>
         <td><button class="btn btn-danger" (click)="openPopup()">Delete</button></td>
       </tr>
       </tbody>

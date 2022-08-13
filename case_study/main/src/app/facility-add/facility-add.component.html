@@ -10,7 +10,7 @@
 <div style="min-height:75vh;padding: 15px 550px 15px 550px">
 
   <div style="width: 800px; background-color: white; padding: 10px; margin-top: 100px;border-radius: 10px">
-    <h1 style="border-radius: 5px; background-color: #046056;color: white;font-family: 'Arial Black',serif;">CREATE
+    <h1 style="text-align: center;border-radius: 5px; background-color: #046056;color: white;font-family: 'Arial Black',serif;">CREATE
       SERVICE</h1>
     <br>
     <div class="row">
@@ -77,10 +77,8 @@
             <div class="col-6">
               <div class="form-group">
                 <label for="standardRoomV">Service Standar Room</label>
-                <select class="custom-select" id="standardRoomV">
-                  <option value="Vip">Vip</option>
-                  <option value="Luxury">Luxury</option>
-                  <option value="Normal">Normal</option>
+                <select class="form-select form-control" id="standardRoomV">
+                  <option *ngFor="let roomStandard of roomStandardList" value="{{ roomStandard}}">{{ roomStandard}}</option>
                 </select>
               </div>
             </div>
@@ -111,19 +109,16 @@
             <div class="col-6">
               <div class="form-group">
                 <label for="rentTypeV">Service Rent Type</label><br>
-                <select class="custom-select" id="rentTypeV">
-                  <option th:each="row,rowStat : ${rentTypeList}"
-                          th:value="${row.id}"
-                          th:text="${row.rentType}">
-                  </option>
+                <select class="form-select form-control" id="rentTypeV">
+                  <option *ngFor="let rentType of rentTypeList" value="{{ rentType.getid()}}">{{ rentType.getname()}}</option>
                 </select>
               </div>
             </div>
             <div class="col-6">
               <div class="form-group">
                 <label for="facilityTypeV">Service Type</label><br>
-                <select class="custom-select" id="facilityTypeV">
-                  <option th:value="1" th:text="Villa"></option>
+                <select class="form-select form-control" id="facilityTypeV">
+                  <option *ngFor="let facilityType of facilityTypeList" value="{{ facilityType.getid()}}">{{ facilityType.getname()}}</option>
                 </select>
               </div>
             </div>
@@ -195,10 +190,8 @@
             <div class="col-6">
               <div class="form-group">
                 <label for="standardRoomH">Service Standar Room</label>
-                <select class="custom-select" id="standardRoomH">
-                  <option value="Vip">Vip</option>
-                  <option value="Luxury">Luxury</option>
-                  <option value="Normal">Normal</option>
+                <select class="form-select form-control" id="standardRoomH">
+                  <option *ngFor="let roomStandard of roomStandardList" value="{{ roomStandard}}">{{ roomStandard}}</option>
                 </select>
               </div>
             </div>
@@ -228,20 +221,17 @@
             </div>
             <div class="col-6">
               <div class="form-group">
-                <label for="rentTypeV">Service Rent Type</label><br>
-                <select class="custom-select" id="rentTypeH">
-                  <option th:each="row,rowStat : ${rentTypeList}"
-                          th:value="${row.id}"
-                          th:text="${row.rentType}">
-                  </option>
+                <label for="rentTypeH">Service Rent Type</label><br>
+                <select class="form-select form-control" id="rentTypeH">
+                  <option *ngFor="let rentType of rentTypeList" value="{{ rentType.getid()}}">{{ rentType.getname()}}</option>
                 </select>
               </div>
             </div>
             <div class="col-6">
               <div class="form-group">
-                <label for="facilityTypeV">Service Type</label><br>
-                <select class="custom-select" id="facilityTypeH">
-                  <option th:value="2" th:text="House"></option>
+                <label for="facilityTypeH">Service Type</label><br>
+                <select class="form-select form-control" id="facilityTypeH">
+                  <option *ngFor="let facilityType of facilityTypeList" value="{{ facilityType.getid()}}">{{ facilityType.getname()}}</option>
                 </select>
               </div>
             </div>
@@ -316,6 +306,7 @@
                 <input readonly placeholder="Don't have this option" type="text" class="form-control"
                        id="standardRoomR">
               </div>
+
             </div>
             <div class="col-6">
               <div class="form-group">
@@ -344,19 +335,16 @@
             <div class="col-6">
               <div class="form-group">
                 <label for="rentTypeR">Service Rent Type</label><br>
-                <select class="custom-select" id="rentTypeR">
-                  <option th:each="row,rowStat : ${rentTypeList}"
-                          th:value="${row.id}"
-                          th:text="${row.rentType}">
-                  </option>
+                <select class="form-select form-control" id="rentTypeR">
+                  <option *ngFor="let rentType of rentTypeList" value="{{ rentType.getid()}}">{{ rentType.getname()}}</option>
                 </select>
               </div>
             </div>
             <div class="col-6">
               <div class="form-group">
                 <label for="facilityTypeR">Service Type</label><br>
-                <select class="custom-select" id="facilityTypeR">
-                  <option th:value="3" th:text="Room"></option>
+                <select class="form-select form-control" id="facilityTypeR">
+                  <option *ngFor="let facilityType of facilityTypeList" value="{{ facilityType.getid()}}">{{ facilityType.getname()}}</option>
                 </select>
               </div>
             </div>

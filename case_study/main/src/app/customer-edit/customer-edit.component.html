@@ -10,7 +10,8 @@
 <div style="min-height:70vh;padding: 15px 50px 15px 50px">
   <form th:action="@{/customer/save}" th:object="${customer}" method="POST" novalidate="novalidate"
         style="width: 50%; margin: auto; margin-top: 100px;margin-bottom: 100px; background-color: white;padding: 20px;border-radius: 10px">
-    <h3 style="text-align: center;font-family: 'Arial Black',serif;">EDIT CUSTOMER</h3>
+    <h1 style="text-align: center;border-radius: 5px; background-color: #046056;color: white;font-family: 'Arial Black',serif;">EDIT CUSTOMER</h1>
+    <br>
     <div class="row">
       <div class="col-6">
         <div class="form-group">
@@ -44,9 +45,9 @@
         <div class="form-group">
           <label for="customerGender">Customer Gender</label><br>
           <p style="color: red" th:if="${#fields.hasErrors('customerGender')}" th:errors="*{customerGender}"></p>
-          <select class="custom-select" id="customerGender" th:field="*{customerGender}">
-            <option value="0">Nam</option>
-            <option value="1">Nữ</option>
+          <select class="form-select form-control" id="customerGender" th:field="*{customerGender}">
+            <option value="0">Male</option>
+            <option value="1">Female</option>
           </select>
         </div>
       </div>
@@ -54,10 +55,8 @@
         <div class="form-group">
           <label for="customerType">Customer Type</label><br>
           <p style="color: red" th:if="${#fields.hasErrors('customerType')}" th:errors="*{customerType}"></p>
-          <select class="custom-select" id="customerType" th:field="*{customerType}">
-            <option th:each="customerType,rowStat : ${listCustomerType}" th:value="${customerType.customerTypeId}"
-                    th:text="${customerType.customerTypeName}">Nam
-            </option>
+          <select class="form-select form-control" id="customerType" th:field="*{customerType}">
+            <option *ngFor="let customerType of customerTypeList" value="{{ customerType.getid()}}">{{ customerType.getname()}}</option>
           </select>
         </div>
       </div>
@@ -95,7 +94,7 @@
       <div class="col-12">
         <table>
           <tr>
-            <th><button class="btn btn-success" type="submit">Save</button></th>
+            <th><button class="btn btn-success" style="background-color: #046056" type="submit">Save</button></th>
             <th><button class="btn btn-secondary"><a style="color: #ffffff;text-decoration: none;" href="http://localhost:4200/customer" role="button">Back to customer list</a></button></th>
           </tr>
         </table>
