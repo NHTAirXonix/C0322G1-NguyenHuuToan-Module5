@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {Customer} from "../model/customer.model";
 import {CustomerType} from "../model/customer-type.model";
 
@@ -8,6 +8,8 @@ import {CustomerType} from "../model/customer-type.model";
   styleUrls: ['./customer.component.css']
 })
 export class CustomerComponent implements OnInit {
+
+  // @Input() customerList: Customer[];
 
   constructor() { }
 

@@ -35,122 +35,14 @@
         <th class="header"><p style="text-align: center">SHOW LIST ATTACH SERVICE</p></th>
       </thead>
       <tbody id="tableService">
-      <tr th:each="contract,rowStat : ${contractDtoList}">
-        <td th:text="${contract.contractId}">1</td>
-        <td th:text="${contract.facility.name}">Villa 1</td>
-        <td th:text="${contract.customer.customerName}">Nguyen Hoang Hao</td>
-        <td th:text="${contract.startDate}">2022-10-10</td>
-        <td th:text="${contract.endDate}">2022-10-12</td>
-        <td th:text="${contract.deposit}">300</td>
-        <td th:text="${contract.totalPay}">1700</td>
-        <td>
-
-            <button th:href="${contract.contractId}" type="button"
-                    th:attr="onclick=|returnIndex('${contract.contractId}')|"
-                    class="greenButton" data-toggle="modal" data-target="#addAttach"
-                    style="height: 35px; width: 35px">
-              <a style="color: white;text-decoration: none">+</a>
-            </button>
-
-        </td>
-        <td>
-
-            <button th:href="${contract.contractId}" type="button"
-                    class="greenButton showListAttachService" data-toggle="modal" data-target="#showAttach">
-              <a style="color: white;text-decoration: none">SHOW LIST ATTACH SERVICE OF CONTRACT</a>
-            </button>
-
-        </td>
-      </tr>
-      <tr th:each="contract,rowStat : ${contractDtoList}">
-        <td th:text="${contract.contractId}">2</td>
-        <td th:text="${contract.facility.name}">House 5</td>
-        <td th:text="${contract.customer.customerName}">Nguyen Van Khanh</td>
-        <td th:text="${contract.startDate}">2022-10-10</td>
-        <td th:text="${contract.endDate}">2022-10-12</td>
-        <td th:text="${contract.deposit}">500</td>
-        <td th:text="${contract.totalPay}">2000</td>
-        <td>
-
-            <button th:href="${contract.contractId}" type="button"
-                    th:attr="onclick=|returnIndex('${contract.contractId}')|"
-                    class="greenButton" data-toggle="modal" data-target="#addAttach"
-                    style="height: 35px; width: 35px">
-              <a style="color: white;text-decoration: none">+</a>
-            </button>
-
-        </td>
-        <td>
-
-            <button th:href="${contract.contractId}" type="button"
-                    class="greenButton showListAttachService" data-toggle="modal" data-target="#showAttach">
-              <a style="color: white;text-decoration: none">SHOW LIST ATTACH SERVICE OF CONTRACT</a>
-            </button>
-
-        </td>
-      </tr>
-      <tr th:each="contract,rowStat : ${contractDtoList}">
-        <td th:text="${contract.contractId}">3</td>
-        <td th:text="${contract.facility.name}">Villa 3</td>
-        <td th:text="${contract.customer.customerName}">Nguyen Thao Uyen</td>
-        <td th:text="${contract.startDate}">2022-03-10</td>
-        <td th:text="${contract.endDate}">2022-05-12</td>
-        <td th:text="${contract.deposit}">600</td>
-        <td th:text="${contract.totalPay}">1900</td>
-        <td>
-
-            <button th:href="${contract.contractId}" type="button"
-                    th:attr="onclick=|returnIndex('${contract.contractId}')|"
-                    class="greenButton" data-toggle="modal" data-target="#addAttach"
-                    style="height: 35px; width: 35px">
-              <a style="color: white;text-decoration: none">+</a>
-            </button>
-
-        </td>
-        <td>
-
-            <button th:href="${contract.contractId}" type="button"
-                    class="greenButton showListAttachService" data-toggle="modal" data-target="#showAttach">
-              <a style="color: white;text-decoration: none">SHOW LIST ATTACH SERVICE OF CONTRACT</a>
-            </button>
-
-        </td>
-      </tr>
-      <tr th:each="contract,rowStat : ${contractDtoList}">
-        <td th:text="${contract.contractId}">4</td>
-        <td th:text="${contract.facility.name}">House 2</td>
-        <td th:text="${contract.customer.customerName}">Nguyen Trung Kien</td>
-        <td th:text="${contract.startDate}">2022-10-09</td>
-        <td th:text="${contract.endDate}">2022-11-12</td>
-        <td th:text="${contract.deposit}">500</td>
-        <td th:text="${contract.totalPay}">900</td>
-        <td>
-
-            <button th:href="${contract.contractId}" type="button"
-                    th:attr="onclick=|returnIndex('${contract.contractId}')|"
-                    class="greenButton" data-toggle="modal" data-target="#addAttach"
-                    style="height: 35px; width: 35px">
-              <a style="color: white;text-decoration: none">+</a>
-            </button>
-
-        </td>
-        <td>
-
-            <button th:href="${contract.contractId}" type="button"
-                    class="greenButton showListAttachService" data-toggle="modal" data-target="#showAttach">
-              <a style="color: white;text-decoration: none">SHOW LIST ATTACH SERVICE OF CONTRACT</a>
-            </button>
-
-        </td>
-      </tr>
-      <tr th:each="contract,rowStat : ${contractDtoList}">
-        <td th:text="${contract.contractId}">5</td>
-        <td th:text="${contract.facility.name}">Room 3</td>
-        <td th:text="${contract.customer.customerName}">Tran Xuan Truong</td>
-        <td th:text="${contract.startDate}">2022-10-02</td>
-        <td th:text="${contract.endDate}">2022-10-03</td>
-        <td th:text="${contract.deposit}">300</td>
-        <td th:text="${contract.totalPay}">600</td>
+      <tr *ngFor="let contract of contractList">
+        <td>{{ contract.getid() }}</td>
+        <td>{{ contract.getfacility().getname() }}</td>
+        <td>{{ contract.getcustomer().getname() }}</td>
+        <td>{{ contract.getdayStart() }}</td>
+        <td>{{ contract.getdayEnd() }}</td>
+        <td>{{ contract.getdeposit() }}</td>
+        <td>{{ contract.getfacility().getcost() - contract.getdeposit() }}</td>
         <td>
 
             <button th:href="${contract.contractId}" type="button"
