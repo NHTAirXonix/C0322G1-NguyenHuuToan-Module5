@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <title>$Title$</title>
+  <meta charset="UTF-8">
+</head>
+<body style="margin: 0; padding: 0;background-image: radial-gradient(#0c5460,#e0e0e0);height: 100vh;width: 100vw">
+
+  <table style="margin: auto; width: 500px">
+    <tr>
+      <th><input (keyup)="setinput1($event)" type="number"></th>
+      <th><select (change)="setoperator($event)" name="operator" id="operator">
+        <option value="">Choose</option>
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+      </select></th>
+      <th><input (keyup)="setinput2($event)" type="number"></th>
+      <th><button (click)="calculate()">=</button></th>
+      <th><input type="number" [value]="result"></th>
+    </tr>
+  </table>
+
+</body>
+</html>
