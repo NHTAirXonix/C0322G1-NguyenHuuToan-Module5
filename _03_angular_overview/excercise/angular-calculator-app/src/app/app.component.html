@@ -9,13 +9,15 @@
   <table style="margin: auto; width: 500px">
     <tr>
       <th><input (keyup)="setinput1($event)" type="number"></th>
-      <th><select (change)="setoperator($event)" name="operator" id="operator">
+      <th>
+        <select (change)="setoperator($event)" name="operator" id="operator">
         <option value="">Choose</option>
         <option value="+">+</option>
         <option value="-">-</option>
         <option value="*">*</option>
         <option value="/">/</option>
-      </select></th>
+      </select>
+      </th>
       <th><input (keyup)="setinput2($event)" type="number"></th>
       <th><button (click)="calculate()">=</button></th>
       <th><input type="number" [value]="result"></th>

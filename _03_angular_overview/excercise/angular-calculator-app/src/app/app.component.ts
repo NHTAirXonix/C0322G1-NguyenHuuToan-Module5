@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,13 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-calculator-app';
-    input1: number=0;
-  input2: number=0;
-  operator: string='';
-  result: number= 0;
+  input1: number = 0;
+  input2: number = 0;
+  operator: string = '';
+  result: number = 0;
 
   calculate() {
-    if (this.operator == '+'){
+    if (this.operator == '+') {
       this.result = parseFloat(String(this.input1)) + parseFloat(String(this.input2));
     } else if (this.operator == '-') {
       this.result = parseFloat(String(this.input1)) - parseFloat(String(this.input2));
