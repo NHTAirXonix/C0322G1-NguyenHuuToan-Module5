@@ -33,6 +33,7 @@ export class AppComponent {
       if (this.result.charAt(i) != '+' && this.result.charAt(i) != '-' && this.result.charAt(i) != '*' && this.result.charAt(i) != '/') {
         this.inputAdd += this.result.charAt(i);
       } else {
+
         if (this.result.charAt(i - 1) == '+' || this.result.charAt(i - 1) == '-' || this.result.charAt(i - 1) == '*' || this.result.charAt(i - 1) == '/' || i == this.result.length - 1) {
           this.check = false;
           break;
@@ -92,3 +93,4 @@ export class AppComponent {
     this.operatorAdd2 = '';
   }
 }
+

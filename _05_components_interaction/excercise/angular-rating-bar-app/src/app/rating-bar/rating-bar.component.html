@@ -1,0 +1,17 @@
+<br>
+<h3 style="text-align: center">Rating Bar</h3>
+<br>
+<div style="margin: auto; width: 500px" class="rating-bar" (mouseleave)="reset()">
+  <div class="rating-unit" style="margin: auto"
+       [class.active]="item.active"
+       *ngFor="let item of ratingUnits; index as i"
+       (click)="select(i)" (mouseenter)="enter(i)">
+    {{ item.value }}
+  </div>
+</div>
+<br>
+<h3 style="text-align: center">Point of Rating Bar</h3>
+<br>
+<div style="margin: auto; font-size: 100px; text-align: center;width: 100px" *ngIf="showRatingValue">
+  {{ ratingValue }}
+</div>
