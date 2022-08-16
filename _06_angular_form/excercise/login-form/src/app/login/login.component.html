@@ -1,0 +1,25 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="formSignUp" style="padding-left: 50px;padding-top: 50px">
+
+  <p>Email</p>
+  <input placeholder="Email" formControlName="email">
+  <p style="color: red"
+     *ngIf="formSignUp.get('email').invalid && formSignUp.get('email').touched">{{ formSignUp.get('email').errors.message}}</p>
+  <br><br>
+  <p>Password:</p>
+  <input type="password" placeholder="Password" formControlName="password">
+  <p style="color: red"
+     *ngIf="formSignUp.get('password').invalid && formSignUp.get('password').touched">password is required and min length is 6</p>
+  <br><br>
+  <button [disabled]="formSignUp.invalid" (click)="save(formSignUp)">Submit</button>
+</form>
+<code>{{ formSignUp.value | json }}</code>
+<table border="1px solid black" style="margin: auto">
+  <tr>
+    <th>Email</th>
+    <th>Password</th>
+  </tr>
+  <tr *ngFor=" let temp of user">
+    <th>{{ temp.email }}</th>
+    <th>{{ temp.password }}</th>
+  </tr>
+</table>

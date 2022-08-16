@@ -361,15 +361,19 @@
           <br>
           <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
             <div class="btn-group me-2" role="group" aria-label="First group">
-              <button class="btn btn-success save3" data-dismiss="modal" id="save3">Save</button>
+              <select class="form-select form-control" id="rentTypeR">
+                <option *ngFor="let rentType of rentTypeList" value="{{ rentType.getid()}}">{{ rentType.getname()}}</option>
+              </select>
             </div>
             <div class="btn-group me-2" role="group" aria-label="Second group">
-              <button (click)="closePopupR()" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <select class="form-select form-control" id="rentTypeR">
+                <option *ngFor="let rentType of rentTypeList" value="{{ rentType.getid()}}">{{ rentType.getname()}}</option>
+              </select>
             </div>
             <div class="btn-group" role="group" aria-label="Third group">
-              <button class="btn btn-primary">
-                <a style="color: white;text-decoration: none;" href="http://localhost:4200/facility" role="button">Back to service list</a>
-              </button>
+              <select class="form-select form-control" id="rentTypeR">
+                <option *ngFor="let rentType of rentTypeList" value="{{ rentType.getid()}}">{{ rentType.getname()}}</option>
+              </select>
             </div>
           </div>
 

@@ -8,17 +8,18 @@ import {FormGroup, FormControl, FormBuilder, Validators, AbstractControl} from "
 
       <p>Email</p>
       <input placeholder="Email" formControlName="email">
-      <p *ngIf="formSignUp.get('email').invalid && formSignUp.get('email').touched">{{ formSignUp.get('email').errors.message}}</p>
+      <p style="color: red"
+         *ngIf="formSignUp.get('email').invalid && formSignUp.get('email').touched">{{ formSignUp.get('email').errors.message}}</p>
 
       <br><br>
 
       <p>Password:</p>
       <div formGroupName="pw">
-      <input type="password" placeholder="Password" formControlName="password">
-      <br><br>
-      <p>Confirm Password:</p>
-      <input type="password" placeholder="confirm Password" formControlName="passwordC">
-      <p *ngIf="formSignUp.hasError('passwordnotmatch', ['pw']) && formSignUp.get('pw').touched">Password does not match!</p>
+        <input type="password" placeholder="Password" formControlName="password">
+        <br><br>
+        <p>Confirm Password:</p>
+        <input type="password" placeholder="confirm Password" formControlName="passwordC">
+        <p style="color: red" *ngIf="formSignUp.hasError('passwordnotmatch', ['pw']) && formSignUp.get('pw').touched">Password does not match!</p>
       </div>
 
       <br><br>
@@ -34,20 +35,23 @@ import {FormGroup, FormControl, FormBuilder, Validators, AbstractControl} from "
 
       <p>Age</p>
       <input placeholder="Age" formControlName="age">
-      <p *ngIf="formSignUp.get('age').invalid && formSignUp.get('age').touched">Must be biger than 18 and required</p>
+      <p style="color: red" *ngIf="formSignUp.get('age').invalid && formSignUp.get('age').touched">Must be biger than 18
+        and required</p>
 
       <br><br>
 
       <p>Gender</p>
       <input type="radio" value="Male" formControlName="gender">Male
       <input type="radio" value="Female" formControlName="gender">Female
-
+      <p style="color: red" *ngIf="formSignUp.get('gender').invalid && formSignUp.get('gender').touched">Must be biger
+        than 18 and required</p>
 
       <br><br>
 
       <p>Phone</p>
-      <input placeholder="Email" formControlName="phone">
-      <p *ngIf="formSignUp.get('phone').invalid && formSignUp.get('phone').touched">Phone is required and format is +84XXXXXXXXX </p>
+      <input placeholder="Phone number" formControlName="phone">
+      <p style="color: red" *ngIf="formSignUp.get('phone').invalid && formSignUp.get('phone').touched">Phone is required
+        and format is +84XXXXXXXXX </p>
 
       <br><br>
 
@@ -58,9 +62,23 @@ import {FormGroup, FormControl, FormBuilder, Validators, AbstractControl} from "
       </div>
 
       <br><br>
-      <button [disabled]="formSignUp.invalid">Submit</button>
+      <button [disabled]="formSignUp.invalid" (click)="save(formSignUp)">Submit</button>
     </form>
     <code>{{ formSignUp.value | json }}</code>
+    <table border="1px solid black">
+      <tr>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Country</th>
+        <th>Age</th>
+      </tr>
+      <tr *ngFor=" let temp of user" >
+        <th>{{ temp.email }}</th>
+        <th>{{ temp.pw.password }}</th>
+        <th>{{ temp.country }}</th>
+        <th>{{ temp.age }}</th>
+      </tr>
+    </table>
   `
 })
 
@@ -80,10 +98,10 @@ export class SignUpComponent implements OnInit {
       }, {
         validator: comparePassword
       }),
-      country: ['', Validators.required],
+      country: ['Viet Nam', Validators.required],
       gender: ['', Validators.required],
-      phone: ['', Validators.required, Validators.pattern("^\+84\d{9,10}$")],
-      age: [null, [Validators.required,Validators.min(18)]],
+      phone: ['', [Validators.required, Validators.pattern('^\\+84\\d{9,10}$')]],
+      age: [null, [Validators.required, Validators.min(18)]],
       subject: this.fb.group({
         nodejs: false,
         angular: false,
@@ -94,6 +112,12 @@ export class SignUpComponent implements OnInit {
 
   onSubmit() {
     console.log(this.formSignUp.value);
+  }
+
+  user: any[] = []
+  save(formSignUp: any) {
+    this.user.push(formSignUp.value);
+    console.log(formSignUp.value);
   }
 
 }
@@ -114,3 +138,5 @@ export function comparePassword(c: AbstractControl) {
     passwordnotmatch: true
   };
 }
+
+
