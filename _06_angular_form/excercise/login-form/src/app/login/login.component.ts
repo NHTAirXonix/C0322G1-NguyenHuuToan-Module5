@@ -41,10 +41,3 @@ function gmailValidator(formControl: FormControl) {
   }
   return {gmail: true, message: 'must have @gmail.com'};
 }
-
-export function comparePassword(c: AbstractControl) {
-  const v = c.value;
-  return (v.password === v.passwordC) ? null : {
-    passwordnotmatch: true
-  };
-}

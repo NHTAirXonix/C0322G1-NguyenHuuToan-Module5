@@ -8,9 +8,7 @@ import {FormGroup, FormControl, FormBuilder, Validators, AbstractControl} from "
 
       <p>Email</p>
       <input placeholder="Email" formControlName="email">
-      <p style="color: red"
-         *ngIf="formSignUp.get('email').invalid && formSignUp.get('email').touched">{{ formSignUp.get('email').errors.message}}</p>
-
+      <p style="color: red" *ngIf="formSignUp.get('email').invalid && formSignUp.get('email').touched">{{ formSignUp.get('email').errors.message}}</p>
       <br><br>
 
       <p>Password:</p>
@@ -95,16 +93,14 @@ export class SignUpComponent implements OnInit {
       pw: this.fb.group({
         password: ['', Validators.required],
         passwordC: ['', Validators.required],
-      }, {
-        validator: comparePassword
-      }),
+      }, {validator: comparePassword}),
       country: ['Viet Nam', Validators.required],
       gender: ['', Validators.required],
       phone: ['', [Validators.required, Validators.pattern('^\\+84\\d{9,10}$')]],
       age: [null, [Validators.required, Validators.min(18)]],
       subject: this.fb.group({
         nodejs: false,
-        angular: false,
+        angular: true,
         reactjs: false
       }),
     });

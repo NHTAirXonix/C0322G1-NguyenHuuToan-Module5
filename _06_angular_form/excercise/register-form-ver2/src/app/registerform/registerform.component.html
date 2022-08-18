@@ -1,0 +1,73 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="formSignUp" style="padding-left: 50px;padding-top: 50px">
+
+  <p>Email</p>
+  <input placeholder="Email" formControlName="email">
+  <p style="color: red" *ngIf="formSignUp.get('email').invalid && formSignUp.get('email').touched">{{ formSignUp.get('email').errors.message}}</p>
+  <br><br>
+
+  <p>Password:</p>
+  <div formGroupName="pw">
+    <input type="password" placeholder="Password" formControlName="password">
+    <br><br>
+    <p>Confirm Password:</p>
+    <input type="password" placeholder="confirm Password" formControlName="passwordC">
+    <p style="color: red" *ngIf="formSignUp.hasError('passwordnotmatch', ['pw']) && formSignUp.get('pw').touched">Password does not match!</p>
+  </div>
+
+  <br><br>
+
+  <p>Country</p>
+  <select formControlName="country">
+    <option value="Viet Nam">Viet Nam</option>
+    <option value="Japan">Japan</option>
+    <option value="Lao">Lao</option>
+  </select>
+
+  <br><br>
+
+  <p>Age</p>
+  <input placeholder="Age" formControlName="age">
+  <p style="color: red" *ngIf="formSignUp.get('age').invalid && formSignUp.get('age').touched">Must be biger than 18
+    and required</p>
+
+  <br><br>
+
+  <p>Gender</p>
+  <input type="radio" value="Male" formControlName="gender">Male
+  <input type="radio" value="Female" formControlName="gender">Female
+  <p style="color: red" *ngIf="formSignUp.get('gender').invalid && formSignUp.get('gender').touched">Must be biger
+    than 18 and required</p>
+
+  <br><br>
+
+  <p>Phone</p>
+  <input placeholder="Phone number" formControlName="phone">
+  <p style="color: red" *ngIf="formSignUp.get('phone').invalid && formSignUp.get('phone').touched">Phone is required
+    and format is +84XXXXXXXXX </p>
+
+  <br><br>
+
+  <div formGroupName="subject">
+    <label><input type="checkbox" name="NodeJS" formControlName="nodejs">NodeJS</label>
+    <label><input type="checkbox" name="Angular" formControlName="angular">Angular</label>
+    <label><input type="checkbox" name="ReactJS" formControlName="reactjs">ReactJS</label>
+  </div>
+
+  <br><br>
+  <button [disabled]="formSignUp.invalid" (click)="save(formSignUp)">Submit</button>
+</form>
+
+<table border="1px solid black">
+  <tr>
+    <th>Email</th>
+    <th>Password</th>
+    <th>Country</th>
+    <th>Age</th>
+  </tr>
+  <tr *ngFor=" let temp of user" >
+    <th>{{ temp.email }}</th>
+    <th>{{ temp.pw.password }}</th>
+    <th>{{ temp.country }}</th>
+    <th>{{ temp.age }}</th>
+  </tr>
+</table>

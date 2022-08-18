@@ -1,7 +1,6 @@
 import {Customer} from "./customer.model";
 import {Facility} from "./facility.model";
 
-
 export class Contract {
   private id: number;
   private dayStart: string;
