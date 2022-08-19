@@ -5,13 +5,20 @@ import {CustomerType} from "../../model/customer-type.model";
 import {Facility} from "../../model/facility.model";
 import {RentType} from "../../model/rent-type.model";
 import {FacilityType} from "../../model/facility-type.model";
+import {CustomerService} from "../../customer_module/service/customer.service";
+import {FacilityService} from "../../facility_module/service/facility.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContractService {
 
-  constructor() { }
+  customerList: Customer[] = this.customerService.getAll();
+  facilityList: Facility[] = this.facilityService.getAll();
+
+  constructor(private customerService: CustomerService,
+              private facilityService: FacilityService,
+  ) { }
 
   contractList: Contract[] = [
     new Contract(1,
@@ -59,23 +66,28 @@ export class ContractService {
     return this.contractList;
   }
 
-  // save(customer: any,id: any) {
-  //   let customerType;
-  //   for (let i =0; i< this.customerTypeList.length; i++ ){
-  //     if (this.customerTypeList[i].getid() == id) {
-  //       let newCustomer = new Customer(
-  //         customer.id,
-  //         this.customerTypeList[i],
-  //         customer.name,
-  //         customer.birthday,
-  //         customer.gender,
-  //         customer.idNumber,
-  //         customer.phone,
-  //         customer.email,
-  //         customer.address,
-  //         customer.status)
-  //       this.customerList.push(newCustomer);
-  //     }
-  //   }
-  // }
+  save(contract: any, customerId: any, facilityId: any) {
+    let customer;
+    let facility;
+    for (let i =0; i< this.customerList.length; i++) {
+      if (this.customerList[i].getid() == customerId){
+        customer = this.customerList[i];
+      }
+    }
+    for (let i =0; i< this.facilityList.length; i++) {
+      if (this.facilityList[i].getid() == facilityId){
+        facility = this.facilityList[i];
+      }
+    }
+
+    let newContract = new Contract(
+      contract.id,
+      contract.dayStart,
+      contract.dayEnd,
+      contract.deposit,
+      // @ts-ignore
+      customer,
+      facility);
+    this.contractList.push(newContract);
+  }
 }

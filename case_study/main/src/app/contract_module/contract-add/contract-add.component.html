@@ -8,129 +8,63 @@
 <body style="margin: 0; padding: 0;background-image: radial-gradient(#0c5460,#e0e0e0);">
 
 <div style="min-height:100vh;padding: 15px 50px 15px 50px">
-  <form th:action="@{/contract/createContractDetail2}" th:object="${contract}" method="POST" novalidate="novalidate"
-        style="width: 50%; margin: auto; margin-top: 100px;margin-bottom: 100px; background-color: white;padding: 20px;border-radius: 10px">
-    <h3
-      style="text-align: center;font-family: 'Arial Black',serif; background-color: #046056;border-radius: 5px;color: white;height: 70px;line-height: 70px">
-      ADD NEW CONTRACT</h3>
+  <form (ngSubmit)="onSubmit()" [formGroup]="formSignUp" style="width: 50%; margin: auto; margin-top: 100px;margin-bottom: 100px; background-color: white;padding: 20px;border-radius: 10px">
+    <h3 style="text-align: center;font-family: 'Arial Black',serif; background-color: #046056;border-radius: 5px;color: white;height: 70px;line-height: 70px">ADD NEW CONTRACT</h3>
+
     <div class="row">
 
       <div class="col-6">
-        <div class="form-group">
-          <label for="startDate">Start Day</label>
-          <p style="color: red" th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}"></p>
-          <input type="date" class="form-control" id="startDate" th:field="*{startDate}"/>
+        <div style="display: flex; justify-content: space-between;">
+          <p style="margin-top: 13px;margin-bottom: 3px">ID Contract</p>
+          <p style="margin-top: 13px;margin-bottom: 3px;color: red" *ngIf="formSignUp.get('id').invalid && formSignUp.get('id').touched">ID is required !</p>
         </div>
+        <input type="number" class="form-control" placeholder="Customer Id" formControlName="id">
       </div>
 
       <div class="col-6">
-        <div class="form-group">
-          <label for="endDate">End Day</label>
-          <p style="color: red" th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}"></p>
-          <input type="date" class="form-control" id="endDate" th:field="*{endDate}"/>
+        <div style="display: flex; justify-content: space-between;">
+          <p style="margin-top: 13px;margin-bottom: 3px">Start Day</p>
+          <p style="margin-top: 13px;margin-bottom: 3px;color: red" *ngIf="formSignUp.get('dayStart').invalid && formSignUp.get('dayStart').touched">Start Day is required !</p>
         </div>
+        <input type="date" class="form-control" formControlName="dayStart">
       </div>
 
       <div class="col-6">
-        <div class="form-group">
-          <label for="customer">Choose Customer</label><br>
-          <p style="color: red" th:if="${#fields.hasErrors('customer')}" th:errors="*{customer}"></p>
-          <select th:field="*{customer.customerId}" class="custom-select" id="customer">
-            <option th:each="row,rowStat : ${customerList}"
-                    th:value="${row.customerId}" th:text="${row.customerName}">
-            </option>
-          </select>
+        <div style="display: flex; justify-content: space-between;">
+          <p style="margin-top: 13px;margin-bottom: 3px">End Day</p>
+          <p style="margin-top: 13px;margin-bottom: 3px;color: red" *ngIf="formSignUp.get('dayEnd').invalid && formSignUp.get('dayEnd').touched">End Day is required !</p>
         </div>
+        <input type="date" class="form-control" formControlName="dayEnd">
       </div>
 
       <div class="col-6">
-        <div class="form-group">
-          <label for="facility">Choose Facility</label><br>
-          <p style="color: red" th:if="${#fields.hasErrors('facility')}" th:errors="*{facility}"></p>
-          <select th:field="*{facility.id}" class="custom-select putId" id="facility">
-            <option th:each="row,rowStat : ${facilityList}"
-                    th:value="${row.id}"
-                    th:text="${row.getName()}">
-            </option>
-          </select>
+        <div style="display: flex; justify-content: space-between;">
+          <p style="margin-top: 13px;margin-bottom: 3px">Choose Customer</p>
+          <p style="margin-top: 13px;margin-bottom: 3px;color: red" *ngIf="formSignUp.get('customer').invalid && formSignUp.get('customer').touched">Customer is required !</p>
         </div>
+        <select class="form-select form-control" formControlName="customer">
+          <option value="">Choose</option>
+          <option *ngFor="let customer of customerList" value="{{ customer.getid() }}">{{ customer.getname()}}</option>
+        </select>
       </div>
 
       <div class="col-6">
-        <div class="form-group">
-          <label for="deposit">Deposit</label>
-          <p style="color: red" th:if="${#fields.hasErrors('deposit')}" th:errors="*{deposit}"></p>
-          <input type="text" class="form-control" id="deposit" th:field="*{deposit}"/>
+        <div style="display: flex; justify-content: space-between;">
+          <p style="margin-top: 13px;margin-bottom: 3px">Choose Facility</p>
+          <p style="margin-top: 13px;margin-bottom: 3px;color: red" *ngIf="formSignUp.get('facility').invalid && formSignUp.get('facility').touched">Customer Type is required !</p>
         </div>
+        <select class="form-select form-control" formControlName="facility">
+          <option value="">Choose</option>
+          <option *ngFor="let facility of facilityList" value="{{ facility.getid() }}">{{ facility.getname()}}</option>
+        </select>
       </div>
 
       <div class="col-6">
-        <div class="form-group">
-          <label for="total">Total Pay</label>
-          <p style="color: red" th:if="${#fields.hasErrors('deposit')}" th:errors="*{deposit}"></p>
-          <input type="text" class="form-control" id="total">
+        <div style="display: flex; justify-content: space-between;">
+          <p style="margin-top: 13px;margin-bottom: 3px">Deposit</p>
+          <p style="margin-top: 13px;margin-bottom: 3px;color: red" *ngIf="formSignUp.get('deposit').invalid && formSignUp.get('deposit').touched">End Day is required !</p>
         </div>
-      </div>
-
-      <div id="tableContract" class="col-12">
-        <br><br>
-        <div class="position-relative">
-          <div class="position-absolute top-50 start-50 translate-middle"><button type="button" class="btn btn-success showListAttachService"><a style="color: white;text-decoration: none">ADD ATTACH SERVICE FOR CONTRACT</a></button></div>
-        </div>
-        <br>
-      </div>
-
-      <div class="col-12">
-        <br>
-        <h3
-          style="text-align: center;font-family: 'Arial Black',serif; background-color: #046056;border-radius: 5px;color: white;height: 70px;line-height: 70px">
-          ADD ATTACH SERVICE</h3>
-        <table class="table table-striped table-bordered">
-          <thead class="thead-dark">
-          <tr>
-            <th class="header"><p style="text-align: center">ID</p></th>
-            <th class="header"><p style="text-align: center">NAME</p></th>
-            <th class="header"><p style="text-align: center">UNIT</p></th>
-            <th class="header"><p style="text-align: center">COST</p></th>
-            <th class="header"><p style="text-align: center">STATUS</p></th>
-            <th class="header"><p style="text-align: center">QUANTITY</p></th>
-            <th class="header"><p style="text-align: center">CHOOSE</p></th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td>1</td>
-            <td>Karaoke</td>
-            <td>1 Hour</td>
-            <td>300</td>
-            <td>Good</td>
-            <td><input class="input-group" type="text" name="unitOfAttachService"></td>
-            <td><input type="checkbox" name="allAttachService" value="${attachService.attachServiceId}"></td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Zoo</td>
-            <td>1 Round</td>
-            <td>800</td>
-            <td>Good</td>
-            <td><input class="input-group" type="text" name="unitOfAttachService"></td>
-            <td><input type="checkbox" name="allAttachService" value="${attachService.attachServiceId}"></td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Massage</td>
-            <td>30 minute</td>
-            <td>500</td>
-            <td>Good</td>
-            <td><input class="input-group" type="text" name="unitOfAttachService"></td>
-            <td><input type="checkbox" name="allAttachService" value="${attachService.attachServiceId}"></td>
-          </tr>
-          </tbody>
-        </table>
-        <br>
-        <div class="position-relative">
-          <div class="position-absolute top-50 start-50 translate-middle"><button class="btn btn-success putId2" type="button">Check Total Pay</button></div>
-        </div>
+        <input type="text" class="form-control" formControlName="deposit">
       </div>
 
     </div>
@@ -140,10 +74,11 @@
         <button class="btn btn-success" type="submit">Save</button>
       </div>
       <div class="btn-group me-2" role="group" aria-label="Second group">
-        <button class="btn btn-secondary"><a style="color: white;text-decoration: none;" href="http://localhost:4200/contract" role="button">Back to contract list</a></button>
+        <button class="btn btn-secondary"><a style="color: white;text-decoration: none;" routerLink="/contract" role="button">Back to contract list</a></button>
       </div>
     </div>
   </form>
+  <code>{{ formSignUp.value | json }}</code>
 </div>
 
 </body>

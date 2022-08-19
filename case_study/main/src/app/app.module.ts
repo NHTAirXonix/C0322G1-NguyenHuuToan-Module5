@@ -9,7 +9,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { RouterModule, Routes} from '@angular/router';
-import { ErrorComponent } from './error/error.component';
+import { ErrorComponent } from './error_module/error.component';
 import { CustomerAddComponent } from './customer_module/customer-add/customer-add.component';
 import { CustomerEditComponent } from './customer_module/customer-edit/customer-edit.component';
 import { FacilityAddComponent } from './facility_module/facility-add/facility-add.component';

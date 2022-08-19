@@ -1,0 +1,12 @@
+<table>
+  <tr>
+    <th>ID</th>
+    <th>WORD</th>
+    <th>VIEW DETAIL</th>
+  </tr>
+  <tr *ngFor="let word of wordList">
+    <th>{{ word.id }}</th>
+    <th>{{ word.word }}</th>
+    <th><button [routerLink]="['/detail',word.id]">VIEW</button></th>
+  </tr>
+</table>

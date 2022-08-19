@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.formSignUp = this.fb.group({
-      email: ['', gmailValidator],
+      email: ['', Validators.email],
       password: ['', [Validators.required,Validators.minLength(6)]],
     });
   }
@@ -32,12 +32,12 @@ export class LoginComponent implements OnInit {
 
 }
 
-function gmailValidator(formControl: FormControl) {
-  if (formControl.value == '') {
-    return {gmail: true, message: 'required'};
-  }
-  if (formControl.value.includes('@gmail.com')) {
-    return null;
-  }
-  return {gmail: true, message: 'must have @gmail.com'};
-}
+// function gmailValidator(formControl: FormControl) {
+//   if (formControl.value == '') {
+//     return {gmail: true, message: 'required'};
+//   }
+//   if (formControl.value.includes('@gmail.com')) {
+//     return null;
+//   }
+//   return {gmail: true, message: 'must have @gmail.com'};
+// }
