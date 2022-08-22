@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import { Customer} from "./model/customer.model";
+import { Customer} from "./customer_module/model/customer.model";
 
 @Component({
   selector: 'app-root',

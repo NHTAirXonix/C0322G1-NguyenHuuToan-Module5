@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import {Contract} from "../../model/contract.model";
-import {Customer} from "../../model/customer.model";
-import {CustomerType} from "../../model/customer-type.model";
-import {Facility} from "../../model/facility.model";
-import {RentType} from "../../model/rent-type.model";
-import {FacilityType} from "../../model/facility-type.model";
+import {Contract} from "../model/contract.model";
+import {Customer} from "../../customer_module/model/customer.model";
+import {CustomerType} from "../../customer_module/model/customer-type.model";
+import {Facility} from "../../facility_module/model/facility.model";
+import {RentType} from "../../facility_module/model/rent-type.model";
+import {FacilityType} from "../../facility_module/model/facility-type.model";
 import {CustomerService} from "../../customer_module/service/customer.service";
 import {FacilityService} from "../../facility_module/service/facility.service";
 

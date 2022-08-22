@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {FacilityType} from "../../model/facility-type.model";
+import {FacilityType} from "../model/facility-type.model";
 
 @Injectable({
   providedIn: 'root'

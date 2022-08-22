@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+</head>
+<body style="margin: 0; padding: 0;background-image: radial-gradient(#0c5460,#e0e0e0);">
+
+<div style="min-height:75vh;padding: 15px 550px 15px 550px">
+
+  <div style="width: 800px; background-color: white; padding: 10px; margin-top: 100px;border-radius: 10px">
+    <h1 style="text-align: center;border-radius: 5px; background-color: #046056;color: white;font-family: 'Arial Black',serif;">EDIT FACILITY</h1>
+
+    <form (ngSubmit)="updateFacility(id)" [formGroup]="formFacility">
+
+      <div class="row">
+
+        <div class="col-6">
+          <div style="display: flex; justify-content: space-between;">
+            <p style="margin-top: 13px;margin-bottom: 3px">Service Type</p>
+            <p style="margin-top: 13px;margin-bottom: 3px;color: red" *ngIf="formFacility.get('facilityType').invalid && formFacility.get('facilityType').touched">Facility Type is required !</p>
+          </div>
+          <select (change)="check(formFacility.value)" class="form-select form-control" formControlName="facilityType">
+            <option value="">Choose</option>
+            <option *ngFor="let facilityType of facilityTypeList" value="{{ facilityType.getid()}}">{{ facilityType.getname()}}</option>
+          </select>
+        </div>
+
+        <div class="col-6">
+          <div style="display: flex; justify-content: space-between;">
+            <p style="margin-top: 13px;margin-bottom: 3px">Facility ID</p>
+            <p style="margin-top: 13px;margin-bottom: 3px;color: red" *ngIf="formFacility.get('id').invalid && formFacility.get('id').touched">ID is required !</p>
+          </div>
+          <input type="number" class="form-control" placeholder="Facility ID" formControlName="id">
+        </div>
+
+        <div class="col-6">
+          <div style="display: flex; justify-content: space-between;">
+            <p style="margin-top: 13px;margin-bottom: 3px">Facility Name</p>
+            <p style="margin-top: 13px;margin-bottom: 3px;color: red" *ngIf="formFacility.get('name').invalid && formFacility.get('name').touched">{{ formFacility.get('name').errors.message }}</p>
+          </div>
+          <input type="text" class="form-control" placeholder="Facility Name" formControlName="name">
+        </div>
+
+        <div class="col-6">
+          <div style="display: flex; justify-content: space-between;">
+            <p style="margin-top: 13px;margin-bottom: 3px">Facility Area</p>
+            <p style="margin-top: 13px;margin-bottom: 3px;color: red" *ngIf="formFacility.get('area').invalid && formFacility.get('area').touched">Facility Area is required !</p>
+          </div>
+          <input type="number" class="form-control" placeholder="Facility Area" formControlName="area">
+        </div>
+
+        <div class="col-6">
+          <div style="display: flex; justify-content: space-between;">
+            <p style="margin-top: 13px;margin-bottom: 3px">Facility Cost</p>
+            <p style="margin-top: 13px;margin-bottom: 3px;color: red" *ngIf="formFacility.get('cost').invalid && formFacility.get('cost').touched">Facility Cost is required !</p>
+          </div>
+          <input type="number" class="form-control" placeholder="Facility Cost" formControlName="cost">
+        </div>
+
+        <div [hidden]="standardRoom" class="col-6">
+          <div style="display: flex; justify-content: space-between;">
+            <p style="margin-top: 13px;margin-bottom: 3px">Facility Standard Room</p>
+            <p style="margin-top: 13px;margin-bottom: 3px;color: red" *ngIf="formFacility.get('standard').invalid && formFacility.get('standard').touched">Standard Room is required !</p>
+          </div>
+          <select class="form-select form-control" formControlName="standard">
+            <option value="">Choose</option>
+            <option *ngFor="let roomStandard of roomStandardList" value="{{ roomStandard}}">{{ roomStandard}}</option>
+          </select>
+        </div>
+
+        <div class="col-6">
+          <div style="display: flex; justify-content: space-between;">
+            <p style="margin-top: 13px;margin-bottom: 3px">Facility Amount Customer</p>
+            <p style="margin-top: 13px;margin-bottom: 3px;color: red" *ngIf="formFacility.get('people').invalid && formFacility.get('people').touched">Amount is required !</p>
+          </div>
+          <input type="number" class="form-control" placeholder="Facility Amount Customer" formControlName="people">
+        </div>
+
+        <div [hidden]="decription" class="col-6">
+          <div style="display: flex; justify-content: space-between;">
+            <p style="margin-top: 13px;margin-bottom: 3px">Facility Description</p>
+            <p style="margin-top: 13px;margin-bottom: 3px;color: red" *ngIf="formFacility.get('decription').invalid && formFacility.get('decription').touched">Description is required !</p>
+          </div>
+          <input type="text" class="form-control" placeholder="Facility Description" formControlName="decription">
+        </div>
+
+        <div [hidden]="poolInput" class="col-6">
+          <div style="display: flex; justify-content: space-between;">
+            <p style="margin-top: 13px;margin-bottom: 3px">Facility Pool Area</p>
+            <p style="margin-top: 13px;margin-bottom: 3px;color: red" *ngIf="formFacility.get('poolArea').invalid && formFacility.get('poolArea').touched">Pool Area is required !</p>
+          </div>
+          <input type="number" class="form-control" placeholder="Facility Pool Area" formControlName="poolArea">
+        </div>
+
+        <div [hidden]="flood" class="col-6">
+          <div style="display: flex; justify-content: space-between;">
+            <p style="margin-top: 13px;margin-bottom: 3px">Facility Floor</p>
+            <p style="margin-top: 13px;margin-bottom: 3px;color: red" *ngIf="formFacility.get('floor').invalid && formFacility.get('floor').touched">Floor is required !</p>
+          </div>
+          <input type="number" class="form-control" placeholder="Facility Floor" formControlName="floor">
+        </div>
+
+        <div class="col-6">
+          <div style="display: flex; justify-content: space-between;">
+            <p style="margin-top: 13px;margin-bottom: 3px">Facility Rent Type</p>
+            <p style="margin-top: 13px;margin-bottom: 3px;color: red" *ngIf="formFacility.get('rentType').invalid && formFacility.get('rentType').touched">Rent Type is required !</p>
+          </div>
+          <select class="form-select form-control" formControlName="rentType">
+            <option value="">Choose</option>
+            <option *ngFor="let rentType of rentTypeList" value="{{ rentType.getid()}}">{{ rentType.getname()}}</option>
+          </select>
+
+        </div>
+
+        <div [hidden]="freeServiceShow" class="col-6">
+          <div style="display: flex; justify-content: space-between;">
+            <p style="margin-top: 13px;margin-bottom: 3px">Free Service</p>
+            <p style="margin-top: 13px;margin-bottom: 3px;color: red" *ngIf="formFacility.get('facilityFree').invalid && formFacility.get('facilityFree').touched">Free Service is required !</p>
+          </div>
+          <input  type="text" class="form-control" formControlName="facilityFree">
+        </div>
+
+        <div class="col-6">
+          <div style="display: flex; justify-content: space-between;">
+            <p style="margin-top: 13px;margin-bottom: 3px">Image Url</p>
+            <p style="margin-top: 13px;margin-bottom: 3px;color: red" *ngIf="formFacility.get('urlImg').invalid && formFacility.get('urlImg').touched">Image Url is required !</p>
+          </div>
+          <input  type="text" class="form-control" formControlName="urlImg">
+        </div>
+
+      </div>
+
+      <!--                BUTTON IN VILLA-->
+
+      <br>
+      <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group me-2" role="group" aria-label="First group">
+          <button [disabled]="formFacility.invalid" class="btn btn-success save1" data-dismiss="modal" id="save1">Save</button>
+        </div>
+        <div class="btn-group me-2" role="group" aria-label="Second group">
+          <button class="btn btn-secondary">
+            <a style="color: white;text-decoration: none;" routerLink="/facility" role="button">Back to facility
+              list</a>
+          </button>
+        </div>
+      </div>
+
+    </form>
+    <code>{{ formFacility.value | json }}</code>
+  </div>
+</div>
+</body>
+</html>

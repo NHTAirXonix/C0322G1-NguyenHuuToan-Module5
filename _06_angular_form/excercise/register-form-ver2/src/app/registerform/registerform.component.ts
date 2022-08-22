@@ -44,15 +44,16 @@ export class RegisterformComponent implements OnInit {
 
 }
 
-// function gmailValidator(formControl: FormControl) {
-//   if (formControl.value == '') {
-//     return {gmail: true, message: 'required'};
-//   }
-//   if (formControl.value.includes('@gmail.com')) {
-//     return null;
-//   }
-//   return {gmail: true, message: 'must have @gmail.com'};
-// }
+function gmailValidator(formControl: FormControl) {
+  if (formControl.value == '') {
+    return {gmail: true, message: 'required'};
+  }
+  if (formControl.value.includes('@gmail.com')) {
+    return null;
+  }
+  return {gmail: true, message: 'must have @gmail.com'};
+}
+
 
 export function comparePassword(c: AbstractControl) {
   const v = c.value;

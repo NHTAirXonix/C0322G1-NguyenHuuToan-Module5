@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {DictionaryServiceService} from "../service/dictionary-service.service";
+import {DictionaryService} from "../service/dictionary.service";
 import {Word} from "../model/word";
 import {ActivatedRoute, ParamMap} from "@angular/router";
 
@@ -13,7 +13,7 @@ export class DetailComponent implements OnInit {
   id: number | any;
   word: any;
 
-    constructor(private dictionaryService: DictionaryServiceService,
+    constructor(private dictionaryService: DictionaryService,
                 private activatedRoute: ActivatedRoute
                 ) {
       this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
@@ -23,7 +23,7 @@ export class DetailComponent implements OnInit {
       });
     }
 
-  getWord(id: number) {
+  getWord(id: number): Word {
     return this.dictionaryService.findById(id);
   }
 

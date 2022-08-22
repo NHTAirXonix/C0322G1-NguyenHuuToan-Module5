@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {Customer} from "../../model/customer.model";
-import {CustomerType} from "../../model/customer-type.model";
+import {Customer} from "../model/customer.model";
+import {CustomerType} from "../model/customer-type.model";
 import {CustomerTypeService} from "./customer-type.service";
 
 @Injectable({
