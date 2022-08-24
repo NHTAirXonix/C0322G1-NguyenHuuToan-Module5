@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+</head>
+<body style="margin: 0; padding: 0;background-image: radial-gradient(#0c5460,#e0e0e0);">
+
+<div style="min-height:70vh;padding: 15px 50px 15px 50px">
+  <form (ngSubmit)="onSubmit()" [formGroup]="formSignUp" style="width: 50%; margin: auto; margin-top: 100px;margin-bottom: 100px; background-color: white;padding: 20px;border-radius: 10px">
+
+    <h1 style="text-align: center;border-radius: 5px; background-color: #046056;color: white;font-family: 'Arial Black',serif;">ADD CUSTOMER</h1><br>
+
+    <div class="row">
+
+      <div class="col-6">
+        <div style="display: flex; justify-content: space-between;">
+          <p style="margin-top: 13px;margin-bottom: 3px">Customer ID</p>
+          <p style="margin-top: 13px;margin-bottom: 3px;color: red" *ngIf="formSignUp.get('id').invalid && formSignUp.get('id').touched">ID is required !</p>
+        </div>
+        <input type="number" class="form-control" placeholder="Customer Id" formControlName="id">
+      </div>
+
+      <div class="col-6">
+        <div style="display: flex; justify-content: space-between;">
+          <p style="margin-top: 13px;margin-bottom: 3px">Customer Name</p>
+          <p style="margin-top: 13px;margin-bottom: 3px;color: red" *ngIf="formSignUp.get('name').invalid && formSignUp.get('name').touched">{{ formSignUp.get('name').errors.message }}</p>
+        </div>
+        <input type="text" class="form-control" placeholder="Customer Name" formControlName="name">
+      </div>
+
+      <div class="col-6">
+        <div style="display: flex; justify-content: space-between;">
+          <p style="margin-top: 13px;margin-bottom: 3px">Customer Birthday</p>
+          <p style="margin-top: 13px;margin-bottom: 3px;color: red" *ngIf="formSignUp.get('birthday').invalid && formSignUp.get('birthday').touched">Birthday required, age > 18 !</p>
+        </div>
+        <input type="date" class="form-control" placeholder="Customer Birthday" formControlName="birthday">
+      </div>
+
+      <div class="col-6">
+        <div style="display: flex; justify-content: space-between;">
+          <p style="margin-top: 13px;margin-bottom: 3px">Customer Email</p>
+          <p style="margin-top: 13px;margin-bottom: 3px;color: red" *ngIf="formSignUp.get('email').invalid && formSignUp.get('email').touched">Email is required and have @X. !</p>
+        </div>
+          <input type="text" class="form-control" placeholder="Customer Email" formControlName="email">
+      </div>
+
+      <div class="col-6">
+        <div style="display: flex; justify-content: space-between;">
+          <p style="margin-top: 13px;margin-bottom: 3px">Customer Gender</p>
+          <p style="margin-top: 13px;margin-bottom: 3px;color: red" *ngIf="formSignUp.get('gender').invalid && formSignUp.get('gender').touched">Gender is required !</p>
+        </div>
+          <select class="form-select form-control" formControlName="gender">
+            <option value="">Choose</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+      </div>
+
+      <div class="col-6">
+        <div style="display: flex; justify-content: space-between;">
+          <p style="margin-top: 13px;margin-bottom: 3px">Customer Type</p>
+          <p style="margin-top: 13px;margin-bottom: 3px;color: red" *ngIf="formSignUp.get('customerTypeI').invalid && formSignUp.get('customerTypeI').touched">Customer Type is required !</p>
+        </div>
+          <select class="form-select form-control" formControlName="customerTypeI">
+            <option value="">Choose</option>
+            <option *ngFor="let customerType of customerTypeList" [value]="customerType.id">{{ customerType.name + customerType.id }}</option>
+          </select>
+      </div>
+
+      <div class="col-6">
+        <div style="display: flex; justify-content: space-between;">
+          <p style="margin-top: 13px;margin-bottom: 3px">Customer Id Card</p>
+          <p style="margin-top: 13px;margin-bottom: 3px;color: red" *ngIf="formSignUp.get('idNumber').invalid && formSignUp.get('idNumber').touched">{{ formSignUp.get('idNumber').errors.message }}</p>
+        </div>
+          <input type="text" class="form-control" placeholder="Customer Id Card Number" formControlName="idNumber">
+      </div>
+
+      <div class="col-6">
+        <div style="display: flex; justify-content: space-between;">
+          <p style="margin-top: 13px;margin-bottom: 3px">Customer Phone Number</p>
+          <p style="margin-top: 13px;margin-bottom: 3px;color: red" *ngIf="formSignUp.get('phone').invalid && formSignUp.get('phone').touched">{{ formSignUp.get('phone').errors.message }}</p>
+        </div>
+          <input type="text" class="form-control" placeholder="Customer Phone Number" formControlName="phone">
+      </div>
+
+      <div class="col-6">
+        <div style="display: flex; justify-content: space-between;">
+          <p style="margin-top: 13px;margin-bottom: 3px">Customer Address</p>
+          <p style="margin-top: 13px;margin-bottom: 3px;color: red" *ngIf="formSignUp.get('address').invalid && formSignUp.get('address').touched">Address Number is required !</p>
+        </div>
+          <input type="text" class="form-control" placeholder="Customer Address" formControlName="address">
+      </div>
+
+      <div class="col-6">
+        <div style="display: flex; justify-content: space-between;">
+          <p style="margin-top: 13px;margin-bottom: 3px">Customer Status</p>
+          <p style="margin-top: 13px;margin-bottom: 3px;color: red" *ngIf="formSignUp.get('status').invalid && formSignUp.get('status').touched">Status Number is required !</p>
+        </div>
+          <input readonly type="text" class="form-control" placeholder="Auto pick" formControlName="status">
+      </div>
+
+    </div>
+    <br>
+
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+      <div class="btn-group me-2" role="group" aria-label="First group">
+        <button [disabled]="formSignUp.invalid" class="btn btn-success" type="submit"  style="background-color: #046056">Save</button>
+      </div>
+      <div class="btn-group me-2" role="group" aria-label="Second group">
+        <button  class="btn btn-secondary"><a style="color: #ffffff;text-decoration: none;" routerLink="/customer/list" >Back to customer list</a></button>
+      </div>
+    </div>
+  </form>
+</div>
+</body>
+
+</html>

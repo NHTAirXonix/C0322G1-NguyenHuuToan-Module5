@@ -1,0 +1,86 @@
+{
+  "customer": [
+    {
+      "id": 1,
+      "name": "Nguyen Huu Toan",
+      "birthday": "1999-06-10",
+      "email": "toan@gmail.com",
+      "gender": "Male",
+      "customerTypeI": 1,
+      "idNumber": 201802281,
+      "phone": "0901263514",
+      "address": "295 Ton Duc Thang",
+      "status": true
+    },
+    {
+      "id": 2,
+      "name": "Nguyen Hoang Hao",
+      "birthday": "1998-05-10",
+      "email": "hao@gmail.com",
+      "gender": "Male",
+      "customerTypeI": 2,
+      "idNumber": 333802281,
+      "phone": "0901263312",
+      "address": "95 Nguyen Huy Tuong",
+      "status": true
+    },
+    {
+      "id": 3,
+      "name": "Nguyen Thao Uyen",
+      "birthday": "1997-09-10",
+      "email": "uyen@gmail.com",
+      "gender": "Female",
+      "customerTypeI": 3,
+      "idNumber": 444802281,
+      "phone": "0901263132",
+      "address": "102 Hoang Hoa Tham",
+      "status": true
+    },
+    {
+      "id": 4,
+      "name": "Nguyen Duong Trung Kien",
+      "birthday": "1996-12-10",
+      "email": "kien@gmail.com",
+      "gender": "Male",
+      "customerTypeI": 4,
+      "idNumber": 555802281,
+      "phone": "0901263123",
+      "address": "05 Ton That Tung",
+      "status": true
+    },
+    {
+      "id": 5,
+      "name": "Tran Xuan Truong",
+      "birthday": "1995-11-10",
+      "email": "truong@gmail.com",
+      "gender": "Male",
+      "customerTypeI": 5,
+      "idNumber": 666802281,
+      "phone": "0901263321",
+      "address": "88 Nguyen Luong Bang",
+      "status": true
+    }
+  ],
+  "customerTypeI": [
+    {
+      "id": 1,
+      "name": "Diamond"
+    },
+    {
+      "id": 2,
+      "name": "Platinum"
+    },
+    {
+      "id": 3,
+      "name": "Gold"
+    },
+    {
+      "id": 4,
+      "name": "Silver"
+    },
+    {
+      "id": 5,
+      "name": "Member"
+    }
+  ]
+}

@@ -2,60 +2,43 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { CustomerComponent } from './customer_module/component/customer/customer.component';
-import { FacilityComponent } from './facility_module/component/facility/facility.component';
 import { ContractComponent } from './contract_module/component/contract/contract.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
-import { RouterModule, Routes} from '@angular/router';
 import { ErrorComponent } from './error/error.component';
-import { CustomerAddComponent } from './customer_module/component/customer-add/customer-add.component';
-import { CustomerEditComponent } from './customer_module/component/customer-edit/customer-edit.component';
-import { FacilityAddComponent } from './facility_module/component/facility-add/facility-add.component';
-import { FacilityEditComponent } from './facility_module/component/facility-edit/facility-edit.component';
 import { ContractAddComponent } from './contract_module/component/contract-add/contract-add.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-
-const routes: Routes = [
-  { path: 'home', component: HomeComponent},
-
-  { path: 'customer', component: CustomerComponent},
-  { path: 'customerAdd', component: CustomerAddComponent},
-  { path: 'customerEdit/:id', component: CustomerEditComponent},
-
-  { path: 'facility', component: FacilityComponent},
-  { path: 'facilityAdd', component: FacilityAddComponent},
-  { path: 'facilityEdit/:id', component: FacilityEditComponent},
-
-  { path: 'contract', component: ContractComponent},
-  { path: 'contractAdd', component: ContractAddComponent},
-
-  { path: '', redirectTo: 'home', pathMatch: 'full'},
-  { path: '**', component: ErrorComponent}
-];
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ToastrModule } from "ngx-toastr";
+import {AppRoutingModule} from "./app-routing.module";
+import {CustomerModule} from "./customer_module/customer.module";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
     AppComponent,
-    CustomerComponent,
-    FacilityComponent,
     ContractComponent,
     HeaderComponent,
     FooterComponent,
     HomeComponent,
     ErrorComponent,
-    CustomerAddComponent,
-    CustomerEditComponent,
-    FacilityAddComponent,
-    FacilityEditComponent,
     ContractAddComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes),
+    AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 2000,
+      progressBar: true,
+      progressAnimation: 'increasing',
+      preventDuplicates: true
+    }),
+    CustomerModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

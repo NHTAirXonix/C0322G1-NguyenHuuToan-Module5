@@ -1,0 +1,101 @@
+{
+  "customer": [
+    {
+      "id": 1,
+      "customerTypeI": {
+        "id": 1,
+        "name": "Diamond"
+      },
+      "name": "Nguyen Huu Toan",
+      "birthday": "1999-06-10",
+      "gender": "Male",
+      "idNumber": 201802281,
+      "phone": "0971263514",
+      "email": "toan@gmail.com",
+      "address": "295 Ton Duc Thang",
+      "status": true
+    },
+    {
+      "id": 2,
+      "customerTypeI": {
+        "id": 2,
+        "name": "Platinum"
+      },
+      "name": "Nguyen Hoang Hao",
+      "birthday": "1998-05-10",
+      "gender": "Male",
+      "idNumber": 333802281,
+      "phone": "0981263312",
+      "email": "hao@gmail.com",
+      "address": "95 Nguyen Huy Tuong",
+      "status": true
+    },
+    {
+      "id": 3,
+      "customerTypeI": {
+        "id": 3,
+        "name": "Gold"
+      },
+      "name": "Nguyen Thao Uyen",
+      "birthday": "1997-09-10",
+      "gender": "Female",
+      "idNumber": 444802281,
+      "phone": "0961263132",
+      "email": "uyen@gmail.com",
+      "address": "102 Hoang Hoa Tham",
+      "status": true
+    },
+    {
+      "id": 4,
+      "customerTypeI": {
+        "id": 4,
+        "name": "Silver"
+      },
+      "name": "Nguyen Duong Trung Kien",
+      "birthday": "1996-12-10",
+      "gender": "Male",
+      "idNumber": 555802281,
+      "phone": "0931263123",
+      "email": "kien@gmail.com",
+      "address": "05 Ton That Tung",
+      "status": true
+    },
+    {
+      "id": 5,
+      "customerTypeI": {
+        "id": 5,
+        "name": "Member"
+      },
+      "name": "Tran Xuan Truong",
+      "birthday": "1995-11-10",
+      "gender": "Male",
+      "idNumber": 666802281,
+      "phone": "0941263321",
+      "email": "truong@gmail.com",
+      "address": "88 Nguyen Luong Bang",
+      "status": true
+    }
+  ],
+  "customerTypeI": [
+    {
+      "id": 1,
+      "name": "Diamond"
+    },
+    {
+      "id": 2,
+      "name": "Platinum"
+    },
+    {
+      "id": 3,
+      "name": "Gold"
+    },
+    {
+      "id": 4,
+      "name": "Silver"
+    },
+    {
+      "id": 5,
+      "name": "Member"
+    }
+  ]
+}

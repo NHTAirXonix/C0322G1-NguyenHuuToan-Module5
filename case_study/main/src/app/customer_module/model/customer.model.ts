@@ -1,16 +1,16 @@
 import {CustomerType} from "./customer-type.model";
 
 export class Customer {
-  private id: number;
-  private type: CustomerType;
-  private name: string;
-  private birthday: string;
-  private gender: string
-  private idNumber: number;
-  private phone: string;
-  private email: string
-  private address: string;
-  private status: boolean;
+  public id: number;
+  public type: CustomerType;
+  public name: string;
+  public birthday: string;
+  public gender: string
+  public idNumber: number;
+  public phone: string;
+  public email: string
+  public address: string;
+  public status: boolean;
 
   constructor(id: number, type: CustomerType, name: string, birthday: string, gender: string, idNumber: number, phone: string, email: string, address: string, status: boolean) {
     this.id = id;

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body style="margin: 0; padding: 0;background-image: radial-gradient(#0c5460,#e0e0e0);">
+
+<div style="min-height:70vh;padding: 50px">
+  <div class="bodyAll">
+    <table id="customerService" class="tableTitle">
+      <tr>
+        <th style="width: 80%"><h1 class="titles">CONTRACT LIST</h1></th>
+        <th>
+          <a routerLink="/contractAdd">
+            <button style="background-color: white;color: black; border-radius: 5px; height: 40px"> &#10010;
+              New Contract
+            </button>
+          </a>
+        </th>
+      </tr>
+    </table>
+
+    <table id="tableContract" class="table table-bordered table-striped" style="width: 100%">
+      <thead class="table-dark">
+      <tr>
+        <th class="header"><p style="text-align: center">#</p></th>
+        <th class="header"><p style="text-align: center">SERVICE</p></th>
+        <th class="header"><p style="text-align: center">CUSTOMER</p></th>
+        <th class="header"><p style="text-align: center">START DAY</p></th>
+        <th class="header"><p style="text-align: center">END DAY</p></th>
+        <th class="header"><p style="text-align: center">DEPOSIT</p></th>
+<!--        <th class="header"><p style="text-align: center">TOTAL PAY</p></th>-->
+<!--        <th class="header"><p style="text-align: center">ADD ATTACH SERVICE</p></th>-->
+<!--        <th class="header"><p style="text-align: center">SHOW LIST ATTACH SERVICE</p></th>-->
+      </thead>
+      <tbody id="tableService">
+      <tr *ngFor="let contract of contractList">
+        <td>{{ contract.getid() }}</td>
+        <td>{{ contract.getfacility().getname() }}</td>
+        <td>{{ contract.getcustomer().getname() }}</td>
+        <td>{{ contract.getdayStart() }}</td>
+        <td>{{ contract.getdayEnd() }}</td>
+        <td>{{ contract.getdeposit() }}</td>
+<!--        <td>{{ contract.getfacility().getcost() - contract.getdeposit() }}</td>-->
+<!--        <td>-->
+<!--            <button th:href="${contract.contractId}" type="button"-->
+<!--                    th:attr="onclick=|returnIndex('${contract.contractId}')|"-->
+<!--                    class="greenButton" data-toggle="modal" data-target="#addAttach"-->
+<!--                    style="height: 35px; width: 35px">-->
+<!--              <a style="color: white;text-decoration: none">+</a>-->
+<!--            </button>-->
+<!--        </td>-->
+<!--        <td>-->
+<!--            <button th:href="${contract.contractId}" type="button"-->
+<!--                    class="greenButton showListAttachService" data-toggle="modal" data-target="#showAttach">-->
+<!--              <a style="color: white;text-decoration: none">SHOW LIST ATTACH SERVICE OF CONTRACT</a>-->
+<!--            </button>-->
+<!--        </td>-->
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</body>
+</html>
